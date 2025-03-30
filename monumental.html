@@ -4,80 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monumental Dwelling Dynamics</title>
+    <!-- Link to CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/js/slideshow.js" defer></script>  <!-- Link to JS for slideshow -->
+    <!-- JavaScript for slideshow functionality -->
+    <script src="assets/js/slideshow.js" defer></script>
 </head>
 <body>
 
     <!-- Header Section -->
     <header>
-        <img src="assets/images/logo.png" alt="Monumental Dwelling Logo">
+        <div class="logo-container">
+            <img class="logo" src="assets/images/logo.png" alt="Monumental Dwelling Logo">
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="monumental.html">Real Estate</a></li>
                 <li><a href="mainstream.html">Content Creation</a></li>
                 <li><a href="merchandise.html">Merchandise</a></li>
-                <li><a href="careers.html">Careers</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Main Content Section -->
+    <!-- Main Content -->
     <main>
         <h1>Available Properties</h1>
 
-        <!-- Slideshow for Buying Properties -->
+        <!-- Buying Properties Section -->
         <section id="buying">
             <h2>Properties for Sale</h2>
-            <div class="slideshow-container" id="buying-slide">
+            <div class="slideshow-container">
+                <!-- Slide 1 -->
                 <div class="slide fade">
                     <img src="assets/images/property1.jpg" alt="Property 1">
+                    <p>Beautiful 3-bedroom house in the suburbs.</p>
                 </div>
+                <!-- Slide 2 -->
                 <div class="slide fade">
                     <img src="assets/images/property2.jpg" alt="Property 2">
+                    <p>Modern apartment with a city view.</p>
                 </div>
+                <!-- Slide 3 -->
                 <div class="slide fade">
                     <img src="assets/images/property3.jpg" alt="Property 3">
+                    <p>Cozy cottage by the countryside.</p>
                 </div>
+                <button class="prev" onclick="changeSlide(-1)">&#10094; Previous</button>
+                <button class="next" onclick="changeSlide(1)">Next &#10095;</button>
             </div>
-            <p>Explore our properties for sale.</p>
         </section>
 
-        <!-- Slideshow for Renting Properties -->
+        <!-- Renting Properties Section -->
         <section id="renting">
             <h2>Properties for Rent</h2>
-            <div class="slideshow-container" id="renting-slide">
+            <div class="slideshow-container">
+                <!-- Slide 1 -->
                 <div class="slide fade">
                     <img src="assets/images/rent1.jpg" alt="Rent Property 1">
+                    <p>Affordable studio apartment.</p>
                 </div>
+                <!-- Slide 2 -->
                 <div class="slide fade">
                     <img src="assets/images/rent2.jpg" alt="Rent Property 2">
+                    <p>Spacious 2-bedroom house near downtown.</p>
                 </div>
+                <!-- Slide 3 -->
                 <div class="slide fade">
                     <img src="assets/images/rent3.jpg" alt="Rent Property 3">
+                    <p>Luxury villa with a swimming pool.</p>
                 </div>
+                <button class="prev" onclick="changeSlide(-1)">&#10094; Previous</button>
+                <button class="next" onclick="changeSlide(1)">Next &#10095;</button>
             </div>
-            <p>Explore our properties for rent.</p>
         </section>
 
-        <!-- Slideshow for Selling Properties -->
-        <section id="selling">
-            <h2>Properties to Sell</h2>
-            <div class="slideshow-container" id="selling-slide">
+        <!-- Bottom Slideshow Section -->
+        <section id="bottom-slideshow">
+            <h2>Our Latest Features</h2>
+            <div class="slideshow-container">
+                <!-- Slide 1 -->
                 <div class="slide fade">
-                    <img src="assets/images/sell1.jpg" alt="Sell Property 1">
+                    <img src="assets/images/feature1.jpg" alt="Feature 1">
+                    <p>Experience the future of living.</p>
                 </div>
+                <!-- Slide 2 -->
                 <div class="slide fade">
-                    <img src="assets/images/sell2.jpg" alt="Sell Property 2">
+                    <img src="assets/images/feature2.jpg" alt="Feature 2">
+                    <p>State-of-the-art interiors.</p>
                 </div>
+                <!-- Slide 3 -->
                 <div class="slide fade">
-                    <img src="assets/images/sell3.jpg" alt="Sell Property 3">
+                    <img src="assets/images/feature3.jpg" alt="Feature 3">
+                    <p>Eco-friendly architecture.</p>
                 </div>
+                <button class="prev" onclick="changeSlide(-1)">&#10094; Previous</button>
+                <button class="next" onclick="changeSlide(1)">Next &#10095;</button>
             </div>
-            <p>Explore our properties to sell.</p>
         </section>
     </main>
 

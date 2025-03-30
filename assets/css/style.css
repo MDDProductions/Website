@@ -1,142 +1,29 @@
-/* Resetting basic styles */
+/* Reset Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body and font styles */
+/* Body and Font Styles */
 body {
   font-family: Arial, sans-serif;
-}
-
-/* Header styles */
-header {
-  background-color: rgba(0, 0, 0, 0.7); /* Transparent black background */
-  color: white;
-  padding: 20px;
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 10;
-}
-
-/* Logo in the header */
-header img.logo {
-  width: 100px; /* Resize logo for top bar */
-  height: auto;
-}
-
-/* Navigation Bar */
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-nav ul li {
-  margin: 0 15px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
-  color: #f1c40f; /* Yellow on hover */
-}
-
-/* Fullscreen logo background section */
-.fullscreen-logo {
-  position: relative;
-  width: 100%;
-  height: 100vh; /* Fullscreen height */
-  background-image: url('assets/images/logo.png'); /* Use logo as background */
-  background-size: cover; /* Ensures the logo fills the screen */
-  background-position: center; /* Centers the logo */
-  background-repeat: no-repeat; /* Prevents tiling */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Top Left Image Section */
-.top-left-image {
-  position: absolute; /* Keeps it fixed within the parent container */
-  top: 10px; /* Adjust as needed */
-  left: 10px; /* Adjust as needed */
-  width: 200px; /* Set desired width */
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 10px; /* Optional styling */
-}
-
-/* About Us section */
-.about-us {
-  padding: 50px 20px;
-  text-align: center;
-}
-
-.about-us h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-.about-us p {
-  font-size: 18px;
   line-height: 1.6;
-  max-width: 800px;
-  margin: 20px auto;
+  color: #333;
 }
 
-.about-image {
-  width: 100%;
-  height: auto;
-  margin-top: 30px;
-  border-radius: 10px;
-}
-
-/* Footer */
-footer {
-  background-color: #333;
+/* Header Section */
+header {
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
   color: white;
   padding: 20px;
   text-align: center;
 }
-/* Resetting basic styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-/* Body and font styles */
-body {
-  font-family: Arial, sans-serif;
-}
-
-/* Header styles */
-header {
-  background-color: rgba(0, 0, 0, 0.7); /* Transparent black background */
-  color: white;
-  padding: 20px;
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 10;
-}
-
-/* Logo in the header */
-header img.logo {
-  width: 100px; /* Resize logo for top bar */
+header .logo-container img.logo {
+  width: 100px; /* Adjust logo size */
   height: auto;
+  display: inline-block; /* Center alignment */
 }
 
 /* Navigation Bar */
@@ -144,61 +31,210 @@ nav ul {
   list-style: none;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
-}
-
-nav ul li {
-  margin: 0 15px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
-  color: #f1c40f; /* Yellow on hover */
-}
-
-/* Links Section */
-.top-links {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
-  background-color: #f5f5f5; /* Light background for better contrast */
-}
-
-.link-item {
-  text-align: center;
-  max-width: 200px; /* Set desired width for each link section */
-}
-
-.link-image {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
-}
-
-.link-image:hover {
-  transform: scale(1.1); /* Slight zoom effect on hover */
-}
-
-.link-item p {
-  font-size: 16px;
-  color: #333; /* Darker text for readability */
   margin-top: 10px;
 }
 
-/* Footer */
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #f1c40f; /* Yellow hover effect */
+}
+
+/* Main Content Section */
+main {
+  padding: 20px;
+  margin-top: 100px; /* Space for fixed header */
+}
+
+main h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+section {
+  margin-bottom: 50px;
+}
+
+section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+section p {
+  text-align: center;
+}
+
+/* Slideshow Container */
+.slideshow-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #000; /* Black background */
+  color: #f4f4f4; /* Light gray text */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navigation Bar */
+.navigation {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85); /* Dark background for navigation */
+  z-index: 2;
+  padding: 15px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Subtle shadow for elevation */
+}
+
+.navigation ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navigation ul li a {
+  text-decoration: none;
+  color: #f4f4f4;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.navigation ul li a:hover {
+  background: #004ad4; /* Bright blue hover effect */
+  color: #fff;
+}
+
+/* Centered Logo Styling */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 100px 0 50px; /* Spacing between navigation and content */
+}
+
+.logo {
+  max-height: 250px; /* Logo size retained */
+  opacity: 0.8; /* Semi-transparent */
+  filter: drop-shadow(0 0 20px #004ad4); /* Blue glow effect */
+  transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover {
+  transform: scale(1.1); /* Enlarges slightly on hover */
+  filter: drop-shadow(0 0 30px #42a5f5); /* Brighter glow on hover */
+}
+
+/* Main Section */
+main {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Section Titles */
+section h2 {
+  text-align: center;
+  color: #42a5f5; /* Bright blue for section titles */
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Slideshow Container */
+.slideshow-container {
+  position: relative;
+  margin: 0 auto;
+  max-width: 90%;
+}
+
+.slideshow-container img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7); /* Deep shadow for depth */
+}
+
+.slide p {
+  text-align: center;
+  margin-top: 10px;
+  color: #42a5f5;
+  font-weight: bold;
+}
+
+/* Slideshow Navigation Buttons */
+button.prev,
+button.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 10px;
+  font-size: 18px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 5px;
+  transition: background 0.3s, transform 0.3s;
+  transform: translateY(-50%);
+}
+
+button.prev:hover,
+button.next:hover {
+  background-color: #004ad4;
+  transform: scale(1.1); /* Buttons enlarge slightly on hover */
+}
+
+button.prev {
+  left: 10px;
+}
+
+button.next {
+  right: 10px;
+}
+
+/* Footer Section */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.85); /* Dark footer background */
+  color: #f4f4f4; /* Light text color */
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
+  margin-top: auto;
+  font-size: 0.9rem;
+}
+
+
+.slideshow-container img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+/* Footer Section */
 footer {
   background-color: #333;
   color: white;
-  padding: 20px;
   text-align: center;
+  padding: 20px 0;
+  margin-top: 50px;
 }
