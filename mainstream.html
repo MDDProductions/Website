@@ -5,6 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header-logo {
+            height: 50px;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .media-section {
+            padding: 20px;
+            text-align: center;
+        }
+        .category-navigation button {
+            margin: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .category-navigation button:hover {
+            background-color: #555;
+        }
+        .video-gallery {
+            display: none;
+            margin-top: 20px;
+        }
+        .video-gallery h2 {
+            margin-bottom: 20px;
+        }
+        .video-item {
+            display: inline-block;
+            margin: 10px;
+        }
+        iframe {
+            width: 300px;
+            height: 200px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -35,81 +104,81 @@
         </div>
 
         <!-- Real Estate Videos -->
-        <div id="realestate" class="video-gallery" style="display:none;">
+        <div id="realestate" class="video-gallery">
             <h2>Real Estate Videos</h2>
             <div class="video-item">
-                <iframe width="300" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="video-item">
-                <iframe width="300" height="200" src="https://www.youtube.com/embed/lYhRuDQ0g0Y" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/lYhRuDQ0g0Y" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="video-item">
-                <iframe width="300" height="200" src="https://www.youtube.com/embed/QFpgb8tZBbA" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/QFpgb8tZBbA" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="video-item">
-                <iframe width="300" height="200" src="https://www.youtube.com/embed/WqGvfwN5Iws" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/WqGvfwN5Iws" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
 
         <!-- Content Creation Videos -->
-        <div id="content" class="video-gallery" style="display:none;">
+        <div id="content" class="video-gallery">
             <h2>Content Creation Videos</h2>
             <div class="video-item">
-                <iframe width="300" height="200" src="https://www.youtube.com/embed/lQm54H-Bz5c" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/lQm54H-Bz5c" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="video-item">
-                <iframe width="300" height="200" src="https://www.youtube.com/embed/hhIt1eUeq4k" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/hhIt1eUeq4k" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="video-item">
-                <iframe width="300" height="200" src="https://www.youtube.com/embed/nU8FO5kIT5c" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/nU8FO5kIT5c" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="video-item">
-                <iframe width="300" height="200" src="https://www.youtube.com/embed/9ZJh3SCt7rk" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/9ZJh3SCt7rk" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
 
         <!-- Merchandise Videos -->
-        <div id="merchandise" class="video-gallery" style="display:none;">
+        <div id="merchandise" class="video-gallery">
             <h2>Merchandise Videos</h2>
             <div class="video-item">
-                <iframe width="300" height="200" src="https://www.youtube.com/embed/a_vgk3HU8J8" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/a_vgk3HU8J8" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="video-item">
-                <iframe width="300" height="200" src="https://www.youtube.com/embed/ZJeRlk9h5aY" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/ZJeRlk9h5aY" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="video-item">
-                <iframe width="300" height="200" src="https://www.youtube.com/embed/vqP3K_lMLws" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/vqP3K_lMLws" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="video-item">
-                <iframe width="300" height="200" src="https://www.youtube.com/embed/kctRt78XoI0" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/kctRt78XoI0" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
 
         <!-- Music Videos -->
-        <div id="music" class="video-gallery" style="display:none;">
+        <div id="music" class="video-gallery">
             <h2>Music Videos</h2>
             <div class="video-item">
-                <iframe width="300" height="200" src="https://www.youtube.com/embed/3JZ_D3ELwOQ" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/3JZ_D3ELwOQ" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="video-item">
-                <iframe width="300" height="200" src="https://www.youtube.com/embed/ExqfT1ee8FQ" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/ExqfT1ee8FQ" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="video-item">
-                <iframe width="300" height="200" src="https://www.youtube.com/embed/YJm3j6M0w1k" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/YJm3j6M0w1k" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
 
         <!-- Event Videos -->
-        <div id="events" class="video-gallery" style="display:none;">
+        <div id="events" class="video-gallery">
             <h2>Event Videos</h2>
             <div class="video-item">
-                <iframe width="300" height="200" src="https://www.youtube.com/embed/kjP-Vd_lPzI" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/kjP-Vd_lPzI" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="video-item">
-                <iframe width="300" height="200" src="https://www.youtube.com/embed/0Vrlm_gbl_8" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/0Vrlm_gbl_8" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="video-item">
-                <iframe width="300" height="200" src="https://www.youtube.com/embed/4tozr-tS9t4" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/4tozr-tS9t4" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
     </section>
