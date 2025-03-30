@@ -171,7 +171,6 @@
             { channelId: "UC6zbkrve6klQ28h3loPJRjg", name: "Channel 1" },  // Example Channel 1
             { channelId: "UC7P8Hq9gXqB3DZZxu6tDJtA", name: "Channel 2" },  // Example Channel 2
             { channelId: "UC8Pznj7TI76f-lSQ2I9QKhg", name: "Channel 3" }   // Example Channel 3
-            // Add more channels here with their respective IDs
         ];
 
         const apiKey = "AIzaSyAm2ka5Oog3_1aBeFoHXA6Xkro99_JuyeU"; // Replace with your YouTube API Key
@@ -198,7 +197,7 @@
 
                         if (viewCount > highestViewerCount) {
                             highestViewerCount = viewCount;
-                            liveStreamUrl = `https://www.youtube.com/embed/${liveStreamId}?autoplay=1&loop=1`;
+                            liveStreamUrl = `https://www.youtube.com/embed/${liveStreamId}?autoplay=1&loop=1&mute=1`;
                         }
                     }
                 } catch (error) {
@@ -222,7 +221,7 @@
         // YouTube Playlist Embeds (You can add as many as you like)
         function createPlaylist(playlistId, elementId) {
             const iframe = document.createElement('iframe');
-            iframe.src = `https://www.youtube.com/embed?listType=playlist&list=${playlistId}&autoplay=1&loop=1`;
+            iframe.src = `https://www.youtube.com/embed?listType=playlist&list=${playlistId}&autoplay=1&loop=1&mute=1`;
             iframe.frameBorder = '0';
             iframe.allowFullscreen = true;
             iframe.width = '100%';
@@ -244,9 +243,11 @@
         function playVideo(category) {
             const iframe = activeIframes[category];
             if (iframe) {
-                const src = iframe.src;
-                // Modify the src to ensure autoplay and mute parameters are set
-                iframe.src = src.includes('autoplay=1') ? src : src + "&autoplay=1&mute=1";
+                let src = iframe.src;
+                if (!src.includes('autoplay=1')) {
+                    // Ensure autoplay and mute are active
+                    iframe.src = src + "&autoplay=1&mute=1";
+                }
             }
         }
 
@@ -254,10 +255,21 @@
         function pauseVideo(category) {
             const iframe = activeIframes[category];
             if (iframe) {
-                const src = iframe.src;
-                iframe.src = src.replace("&autoplay=1", "");
+                let src = iframe.src;
+                // Remove autoplay and mute to pause the video
+                iframe.src = src.replace("&autoplay=1", "").replace("&mute=1", "");
             }
         }
+
+        // Detect tab visibility change and pause videos when the tab is not visible
+        document.addEventListener('visibilitychange', function () {
+            if (document.hidden) {
+                for (let category in activeIframes) {
+                    pauseVideo(category);
+                }
+            }
+        });
+
     </script>
 
 </body>
