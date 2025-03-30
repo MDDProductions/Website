@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mainstream Digital Dynamics</title>
+    <title>Mainstream Digital Dynamics - Content Creation</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-
-    <!-- Header Section -->
     <header>
-        <img src="assets/images/logo.png" alt="Mainstream Digital Logo">
+        <div class="logo">
+            <img src="assets/images/logo.png" alt="Holding Company Logo">
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -24,44 +24,41 @@
         </nav>
     </header>
 
-    <!-- Main Content Section -->
-    <main>
-        <h1>Content Creation Hub</h1>
-        <section id="videos">
-            <h2>Featured Videos</h2>
-            <video width="320" height="240" controls>
-                <source src="assets/videos/sample.mp4" type="video/mp4">
+    <section>
+        <h1>Live Content & Streaming</h1>
+        <p>Welcome to Mainstream Digital Dynamics! Enjoy the best content and live streaming here.</p>
+
+        <!-- Video Section for Content Creation -->
+        <h2>Featured Videos</h2>
+        <div class="video-gallery">
+            <video class="video-item" controls>
+                <source src="assets/videos/content1.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-        </section>
+            <video class="video-item" controls>
+                <source src="assets/videos/content2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
 
-        <section id="pictures">
-            <h2>Picture Gallery</h2>
-            <div class="gallery">
-                <img src="assets/images/picture1.jpg" alt="Picture 1">
-                <img src="assets/images/picture2.jpg" alt="Picture 2">
-                <img src="assets/images/picture3.jpg" alt="Picture 3">
-            </div>
-        </section>
+        <!-- Live Stream Section -->
+        <h2>Live Streaming</h2>
+        <button id="start-live-stream">Start Live Stream</button>
+        <div id="live-stream-container" style="display: none;">
+            <iframe src="https://www.youtube.com/embed/your-live-stream-id" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
 
-        <section id="contests">
-            <h2>Best Content of the Month</h2>
-            <p>Submit your content to win a special prize!</p>
-        </section>
-
-        <section id="live-stream">
-            <h2>Live Stream</h2>
-            <div class="streaming-container">
-                <p>Watch our live stream here.</p>
-                <iframe src="https://www.youtube.com/embed/live_stream" frameborder="0"></iframe>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer Section -->
     <footer>
-        <p>&copy; 2025 Mainstream Digital Dynamics. All rights reserved.</p>
+        <p>&copy; 2025 Holding Company. All rights reserved.</p>
     </footer>
 
+    <script>
+        // Button to start live stream (to mirror it)
+        document.getElementById("start-live-stream").addEventListener("click", function() {
+            var liveStreamContainer = document.getElementById("live-stream-container");
+            liveStreamContainer.style.display = 'block';
+        });
+    </script>
 </body>
 </html>

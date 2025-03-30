@@ -1,0 +1,15 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES['resume'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $position = $_POST['position'];
+    $resume = $_FILES['resume'];
+
+    // Save the resume to a folder (make sure it's writable)
+    $upload_dir = 'uploads/';
+    move_uploaded_file($resume['tmp_name'], $upload_dir . basename($resume['name']));
+
+    // Handle the form logic (e.g., save to database, send an email, etc.)
+    echo "Thank you for your application!";
+}
+?>
