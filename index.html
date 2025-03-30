@@ -1,152 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - MDD Productions</title>
-    <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Website</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        /* Body Styling */
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            background-color: #000; /* Black background */
-            color: #f4f4f4;
-        }
+    /* Body Styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      background-color: #000; /* Black background */
+      color: #f4f4f4;
+    }
 
-        /* Navigation Bar */
-        .navigation {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.075); /* Transparent background */
-            z-index: 2;
-            padding: 10px 0;
-        }
+    /* Navigation Bar */
+    .navigation {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.075); /* Dark background for navigation */
+      z-index: 2;
+      padding: 15px 0;
+    }
 
-        .navigation a {
-            text-decoration: none;
-            color: white; /* White text color */
-            font-weight: bold;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
-        }
+    .navigation ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
 
-        .navigation a:hover {
-            background-color: #ddd;
-            color: #000;
-        }
+    .navigation ul li a {
+      text-decoration: none;
+      color: #f4f4f4;
+      font-size: 1.2rem;
+      font-weight: bold;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+    }
 
-        /* Centered Logo Styling */
-        .logo-container {
-            margin: 80px 0; /* Spacing below navigation */
-            text-align: center;
-        }
+    .navigation ul li a:hover {
+      background: #004ad4;
+      color: #fff;
+    }
 
-        .logo {
-            max-width: 400px; /* Logo size */
-            transition: transform 0.3s;
-        }
+    /* Centered Logo Styling */
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 100px 0; /* Spacing between navigation and links */
+    }
 
-        .logo:hover {
-            transform: scale(1.1); /* Slight zoom on hover */
-        }
+    .logo {
+      max-height: 250px; /* Logo size retained */
+      opacity: 0.5; /* Semi-transparent */
+      filter: drop-shadow(0 0 20px #004ad4);
+      transition: transform 0.3s ease-in-out;
+    }
 
-        /* Links Section */
-        .top-links {
-            display: flex; /* Arrange links horizontally */
-            justify-content: space-between; /* Distribute links equally */
-            padding: 40px;
-            margin-top: 50px; /* Adjusted space below logo */
-        }
+    .logo:hover {
+      transform: scale(1.05); /* Hover effect */
+      filter: drop-shadow(0 0 30px #42a5f5);
+    }
 
-        .link-item {
-            text-align: center;
-            background: rgba(0, 0, 0, 0.8);
-            border: 2px solid #004ad4;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-            padding: 15px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            color: #f4f4f4;
-            flex: 1; /* Equal width for all links */
-            margin: 0 10px;
-        }
+    /* Links Section */
+    .top-links {
+      display: flex; /* Arrange links horizontally */
+      justify-content: space-between; /* Distribute links equally */
+      padding: 40px;
+      margin-top: 50px; /* Adjusted space below logo */
+    }
 
-        .link-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.7);
-        }
+    .link-item {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid #004ad4;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      color: #f4f4f4;
+      flex: 1; /* Equal width for all links */
+      margin: 0 10px;
+    }
 
-        .link-image {
-            max-width: 100%;
-            border-radius: 8px;
-        }
+    .link-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.7);
+    }
 
-        .link-item p {
-            margin-top: 10px;
-            font-weight: bold;
-            color: #004ad4;
-        }
+    .link-image {
+      max-width: 100%;
+      border-radius: 8px;
+    }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.85);
-            color: #f4f4f4;
-        }
-    </style>
+    .link-item p {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #004ad4;
+    }
+
+    /* About Us Section */
+    .about-us {
+      text-align: center;
+      padding: 50px 20px;
+      margin: 20px auto;
+      max-width: 800px; /* Restricts width */
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+      line-height: 1.8;
+    }
+
+    .about-us h2 {
+      font-size: 2rem;
+      color: #004ad4;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .about-us p {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.85);
+      color: #f4f4f4;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navigation">
-        <a href="#about">About</a>
-        <a href="#mainstreamDigital">Mainstream Digital</a>
-        <a href="#contact">Contact</a>
-    </nav>
+  <!-- Fixed Navigation Bar -->
+  <nav class="navigation">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#forms">Forms</a></li>
+      <li><a href="#careers">Careers</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <!-- Logo Section -->
-    <div class="logo-container">
-        <a href="index.html">
-            <img src="assets/images/logo.png" class="logo" alt="Site Logo">
-        </a>
+  <!-- Centered Logo Section -->
+  <div class="logo-container">
+    <img src="assets/images/logo.png" class="logo" alt="Site Logo">
+  </div>
+
+  <!-- Links Section -->
+  <section class="top-links">
+    <div class="link-item">
+      <a href="monumental.html" target="_self">
+        <img src="assets/images/monumental-dwelling.jpg" alt="Monumental Dwelling" class="link-image">
+        <p>Monumental Dwelling Dynamics</p>
+      </a>
     </div>
+    <div class="link-item">
+      <a href="#content" target="_self">
+        <img src="assets/images/mainstream-digital.jpg" alt="Mainstream Digital" class="link-image">
+        <p>Mainstream Digital Dynamics</p>
+      </a>
+    </div>
+    <div class="link-item">
+      <a href="#store" target="_self">
+        <img src="assets/images/merchandise.jpg" alt="Merchandise" class="link-image">
+        <p>Merchandise Done Different</p>
+      </a>
+    </div>
+  </section>
 
-    <!-- Links Section -->
-    <section class="top-links">
-        <div class="link-item">
-            <a href="monumental.html" target="_self">
-                <img src="assets/images/monumental-dwelling.jpg" alt="Monumental Dwelling" class="link-image">
-                <p>Monumental Dwelling Dynamics</p>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="mainstream.html" target="_self"> <!-- Points to Mainstream Digital -->
-                <img src="assets/images/mainstream-digital.jpg" alt="Mainstream Digital" class="link-image">
-                <p>Mainstream Digital Dynamics</p>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="#store" target="_self">
-                <img src="assets/images/merchandise.jpg" alt="Merchandise" class="link-image">
-                <p>Merchandise Done Different</p>
-            </a>
-        </div>
-    </section>
+  <!-- About Us Section -->
+  <section class="about-us">
+    <h2>About Us</h2>
+    <p>
+      At MDDProductions, we are dedicated to transforming ideas into reality. Whether it’s crafting monumental dwellings, exploring digital dynamics, or redefining merchandise, our mission is to innovate and inspire. With years of expertise and a passionate team, we strive to exceed expectations and create lasting impressions.
+    </p>
+    <p>
+      Our commitment to quality, creativity, and customer satisfaction is at the heart of everything we do. Join us as we continue to shape the future with bold ideas and visionary solutions.
+    </p>
+  </section>
 
-    <!-- Footer Section -->
-    <footer>
-        <p>&copy; MDD Productions. All rights reserved.</p>
-    </footer>
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; MDDProductions. All rights reserved.</p>
+  </footer>
 </body>
 </html>
