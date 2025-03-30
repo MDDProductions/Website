@@ -1,9 +1,15 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MainStream Digital Dynamics</title>
+
+    <!-- Favicon Link (place this line inside the <head> section) -->
+    <link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
+    <!-- OR, if you have a PNG file -->
+    <!-- <link rel="icon" href="assets/images/favicon.png" type="image/png"> -->
+
     <style>
         /* General Reset */
         * {
@@ -58,7 +64,7 @@
 
         iframe {
             width: 100%;
-            height: 500px; /* Increased height for better use of space */
+            height: 500px; /* Increased height to utilize empty space */
         }
 
         footer {
@@ -192,7 +198,7 @@
 
                         if (viewCount > highestViewerCount) {
                             highestViewerCount = viewCount;
-                            liveStreamUrl = `https://www.youtube.com/embed/${liveStreamId}?autoplay=1&loop=1&mute=1`;
+                            liveStreamUrl = `https://www.youtube.com/embed/${liveStreamId}?autoplay=1&loop=1`;
                         }
                     }
                 } catch (error) {
@@ -203,7 +209,7 @@
             // Display the live stream with the highest viewers
             if (liveStreamUrl) {
                 document.getElementById('live-stream-placeholder').innerHTML = `
-                    <iframe width="560" height="500" src="${liveStreamUrl}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="${liveStreamUrl}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 `;
             } else {
                 document.getElementById('live-stream-placeholder').innerHTML = "No live streams are currently active.";
@@ -216,11 +222,11 @@
         // YouTube Playlist Embeds (You can add as many as you like)
         function createPlaylist(playlistId, elementId) {
             const iframe = document.createElement('iframe');
-            iframe.src = `https://www.youtube.com/embed?listType=playlist&list=${playlistId}&autoplay=1&loop=1&mute=1`;
+            iframe.src = `https://www.youtube.com/embed?listType=playlist&list=${playlistId}&autoplay=1&loop=1`;
             iframe.frameBorder = '0';
             iframe.allowFullscreen = true;
             iframe.width = '100%';
-            iframe.height = '500px'; // Adjust height for better space utilization
+            iframe.height = '500px'; // Increased height for better usage of empty space
             document.getElementById(elementId).appendChild(iframe);
             
             // Store the iframe reference
