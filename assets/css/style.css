@@ -9,6 +9,7 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   color: #333;
+  overflow-x: hidden;
 }
 
 /* Hero Section (Full-screen Background with Logo) */
@@ -19,6 +20,9 @@ body {
   background-image: url('assets/images/logo.png');
   background-size: cover;
   background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .overlay {
@@ -27,7 +31,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,9 +39,8 @@ body {
 }
 
 .logo {
-  max-width: 300px;
-  opacity: 0.7;
-  margin-bottom: 20px;
+  max-width: 450px; /* Larger Logo */
+  opacity: 0.8;
 }
 
 .navbar ul {
@@ -67,7 +70,6 @@ body {
   padding: 50px 20px;
   background-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-top: -30px;
 }
 
 .intro h1 {
@@ -117,7 +119,55 @@ footer {
   padding: 20px;
   background-color: #2c3e50;
   color: #fff;
-  position: relative;
-  bottom: 0;
+}
+
+/* Media Page */
+.media {
+  padding: 50px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.media h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.video-categories {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  overflow-x: scroll;
+  padding-top: 20px;
+}
+
+.category {
+  flex: 0 0 auto;
+  width: 300px;
+  text-align: center;
+}
+
+.category h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.video-gallery {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+}
+
+video {
   width: 100%;
+  max-width: 280px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+video:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
 }

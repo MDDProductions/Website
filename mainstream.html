@@ -3,61 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mainstream Digital Dynamics</title>
+    <title>Media - Content Creation</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header>
-        <img src="assets/images/logo.png" alt="Holding Company Logo" class="logo">
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="monumental.html">Real Estate</a></li>
-                <li><a href="mainstream.html">Content Creation</a></li>
-                <li><a href="merchandise.html">Merchandise</a></li>
-                <li><a href="careers.html">Careers</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+    <header class="hero">
+        <div class="overlay">
+            <img class="logo" src="assets/images/logo.png" alt="Holding Company Logo">
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="monumental.html">Real Estate</a></li>
+                    <li><a href="mainstream.html">Content Creation</a></li>
+                    <li><a href="merchandise.html">Merchandise</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <section class="media-section">
-        <h1>Content Creation Hub</h1>
-        <p>Enjoy our latest videos and live streaming content!</p>
+    <section class="media">
+        <h1>Video Categories</h1>
 
-        <div class="video-section">
-            <h2>Latest Videos</h2>
-            <video width="320" height="240" controls>
-                <source src="assets/videos/sample-video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
+        <div class="video-categories">
+            <div class="category">
+                <h2>Category 1</h2>
+                <div class="video-gallery">
+                    <video src="assets/videos/video1.mp4" controls></video>
+                    <video src="assets/videos/video2.mp4" controls></video>
+                    <video src="assets/videos/video3.mp4" controls></video>
+                </div>
+            </div>
 
-        <div class="live-streaming">
-            <h2>Live Streaming</h2>
-            <button onclick="startStream()">Start Streaming</button>
-        </div>
-
-        <div class="contest">
-            <h2>Best Content of the Month</h2>
-            <p>Submit your best content to win a prize!</p>
-            <form action="submit-content.php" method="post">
-                <input type="file" name="content-file" required>
-                <button type="submit">Submit</button>
-            </form>
+            <div class="category">
+                <h2>Category 2</h2>
+                <div class="video-gallery">
+                    <video src="assets/videos/video4.mp4" controls></video>
+                    <video src="assets/videos/video5.mp4" controls></video>
+                    <video src="assets/videos/video6.mp4" controls></video>
+                </div>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 Mainstream Digital Dynamics. All rights reserved.</p>
+        <p>&copy; 2025 Holding Company. All rights reserved.</p>
     </footer>
-
-    <script>
-        function startStream() {
-            alert('You can now start live streaming!');
-            // Integrate live streaming functionality here.
-        }
-    </script>
 </body>
 </html>
