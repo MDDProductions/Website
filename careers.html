@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Careers</title>
+    <title>Careers - Holding Company</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="assets/images/logo.png" alt="Holding Company Logo">
-        </div>
+        <img src="assets/images/logo.png" alt="Holding Company Logo" class="logo">
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -20,35 +18,26 @@
                 <li><a href="merchandise.html">Merchandise</a></li>
                 <li><a href="careers.html">Careers</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="forms.html">Forms</a></li>
             </ul>
         </nav>
     </header>
 
-    <section>
-        <h1>Careers at Our Holding Company</h1>
-        <p>Join our team! Fill out the application form below to apply for a job.</p>
+    <section class="career-section">
+        <h1>Join Our Team</h1>
+        <p>We are always looking for talented people to join our family.</p>
 
-        <form action="submit_career_form.php" method="POST" enctype="multipart/form-data">
-            <div>
-                <label for="name">Your Name:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div>
-                <label for="email">Your Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div>
-                <label for="position">Position Applied For:</label>
-                <input type="text" id="position" name="position" required>
-            </div>
-            <div>
-                <label for="resume">Upload Your Resume (PDF only):</label>
-                <input type="file" id="resume" name="resume" accept=".pdf" required>
-            </div>
-            <div>
-                <button type="submit">Submit Application</button>
-            </div>
+        <h2>Current Openings</h2>
+        <ul>
+            <li>Real Estate Agent</li>
+            <li>Content Creator</li>
+            <li>Marketing Specialist</li>
+        </ul>
+
+        <h2>Apply Now</h2>
+        <form action="submit-application.php" method="post" enctype="multipart/form-data">
+            <label for="resume">Upload Your Resume (PDF):</label>
+            <input type="file" id="resume" name="resume" accept=".pdf" required>
+            <button type="submit">Submit</button>
         </form>
     </section>
 
