@@ -3,47 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Media - Content Creation</title>
+    <title>Media</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header class="hero">
-        <div class="overlay">
-            <img class="logo" src="assets/images/logo.png" alt="Holding Company Logo">
-            <nav class="navbar">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="monumental.html">Real Estate</a></li>
-                    <li><a href="mainstream.html">Content Creation</a></li>
-                    <li><a href="merchandise.html">Merchandise</a></li>
-                    <li><a href="careers.html">Careers</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+    <header>
+        <img src="assets/images/logo.png" alt="Logo" class="header-logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="monumental.html">Real Estate</a></li>
+                <li><a href="mainstream.html">Content Creation</a></li>
+                <li><a href="merchandise.html">Merchandise</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section class="media">
-        <h1>Video Categories</h1>
+    <section class="media-section">
+        <h1>Our Media</h1>
 
-        <div class="video-categories">
-            <div class="category">
-                <h2>Category 1</h2>
-                <div class="video-gallery">
-                    <video src="assets/videos/video1.mp4" controls></video>
-                    <video src="assets/videos/video2.mp4" controls></video>
-                    <video src="assets/videos/video3.mp4" controls></video>
-                </div>
+        <!-- Categories Navigation -->
+        <div class="category-navigation">
+            <button onclick="showCategory('realestate')">Real Estate</button>
+            <button onclick="showCategory('content')">Content Creation</button>
+            <button onclick="showCategory('merchandise')">Merchandise</button>
+            <button onclick="showCategory('music')">Music</button>
+            <button onclick="showCategory('events')">Events</button>
+        </div>
+
+        <!-- Real Estate Videos -->
+        <div id="realestate" class="video-gallery" style="display:none;">
+            <h2>Real Estate Videos</h2>
+            <div class="video-item">
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
             </div>
+            <div class="video-item">
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/lYhRuDQ0g0Y" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item">
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/QFpgb8tZBbA" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item">
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/WqGvfwN5Iws" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
 
-            <div class="category">
-                <h2>Category 2</h2>
-                <div class="video-gallery">
-                    <video src="assets/videos/video4.mp4" controls></video>
-                    <video src="assets/videos/video5.mp4" controls></video>
-                    <video src="assets/videos/video6.mp4" controls></video>
-                </div>
+        <!-- Content Creation Videos -->
+        <div id="content" class="video-gallery" style="display:none;">
+            <h2>Content Creation Videos</h2>
+            <div class="video-item">
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/lQm54H-Bz5c" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item">
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/hhIt1eUeq4k" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item">
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/nU8FO5kIT5c" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item">
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/9ZJh3SCt7rk" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Merchandise Videos -->
+        <div id="merchandise" class="video-gallery" style="display:none;">
+            <h2>Merchandise Videos</h2>
+            <div class="video-item">
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/a_vgk3HU8J8" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item">
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/ZJeRlk9h5aY" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item">
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/vqP3K_lMLws" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item">
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/kctRt78XoI0" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Music Videos -->
+        <div id="music" class="video-gallery" style="display:none;">
+            <h2>Music Videos</h2>
+            <div class="video-item">
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/3JZ_D3ELwOQ" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item">
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/ExqfT1ee8FQ" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item">
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/YJm3j6M0w1k" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Event Videos -->
+        <div id="events" class="video-gallery" style="display:none;">
+            <h2>Event Videos</h2>
+            <div class="video-item">
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/kjP-Vd_lPzI" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item">
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/0Vrlm_gbl_8" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item">
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/4tozr-tS9t4" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
     </section>
@@ -51,5 +117,18 @@
     <footer>
         <p>&copy; 2025 Holding Company. All rights reserved.</p>
     </footer>
+
+    <script>
+        function showCategory(category) {
+            // Hide all video galleries
+            const galleries = document.querySelectorAll('.video-gallery');
+            galleries.forEach(gallery => {
+                gallery.style.display = 'none';
+            });
+
+            // Show the selected category
+            document.getElementById(category).style.display = 'block';
+        }
+    </script>
 </body>
 </html>
