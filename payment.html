@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Merchandise Done Different</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <img src="assets/images/logo.png" alt="Merchandise Logo">
+        <nav>
+            <ul>
+                <li><a href="monumental.html">Monumental Dwelling Dynamics</a></li>
+                <li><a href="mainstream.html">Mainstream Digital Dynamics</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Payment Section -->
+    <main>
+        <h1>Complete Your Purchase</h1>
+
+        <div id="payment-info">
+            <p>Product: <span id="product-name">Product Name</span></p>
+            <p>Price: $<span id="product-price">0.00</span></p>
+
+            <form id="payment-form">
+                <!-- You can use a payment gateway here (e.g., Stripe, PayPal) -->
+                <button type="submit" class="payment-button">Pay Now</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; Merchandise Done Different. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript to fetch the product info from the URL and display it dynamically
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('product');
+
+        // Here you can fetch product details based on the productId, for example, from an API
+        // For simplicity, we're using static data here.
+        let productName = 'Product Name';
+        let productPrice = '20.00';
+
+        if (productId == '2') {
+            productName = 'Product Name 2';
+            productPrice = '25.00';
+        }
+
+        // Display the product name and price dynamically
+        document.getElementById('product-name').textContent = productName;
+        document.getElementById('product-price').textContent = productPrice;
+
+        // Add your payment gateway integration here
+        document.getElementById('payment-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Redirecting to payment gateway...');
+            // Here you can redirect to a payment processor page or integrate their API
+        });
+    </script>
+
+</body>
+</html>

@@ -5,20 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Merchandise Done Different</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Inline styles for the hover effect on the logo */
+        .logo {
+            width: 100px; /* Adjust logo size as needed */
+            height: auto;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            cursor: pointer; /* Change cursor to indicate clickability */
+        }
+
+        .logo:hover {
+            transform: translateY(-10px); /* Moves logo up when hovered */
+            filter: brightness(1.2); /* Brighten logo */
+        }
+    </style>
 </head>
 <body>
 
     <!-- Header Section -->
     <header>
-        <img src="assets/images/logo.png" alt="Merchandise Logo">
+        <!-- Logo as a clickable home button -->
+        <a href="index.html">
+            <img src="assets/images/logo.png" alt="Merchandise Logo" class="logo">
+        </a>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="monumental.html">Real Estate</a></li>
-                <li><a href="mainstream.html">Content Creation</a></li>
-                <li><a href="merchandise.html">Merchandise</a></li>
-                <li><a href="careers.html">Careers</a></li>
+                <li><a href="monumental.html">Monumental Dwelling Dynamics</a></li>
+                <li><a href="mainstream.html">Mainstream Digital Dynamics</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -31,12 +44,34 @@
         <section id="products">
             <h2>Featured Products</h2>
             <div class="product-list">
+                <!-- Product 1 -->
                 <div class="product-item">
                     <img src="assets/images/product1.jpg" alt="Product 1">
                     <p>Product Name 1</p>
                     <p>$20.00</p>
+                    <!-- Add a link to the payment page for this product -->
+                    <a href="payment.html?product=1" class="buy-button">Buy Now</a>
                 </div>
+                
+                <!-- Product 2 -->
                 <div class="product-item">
                     <img src="assets/images/product2.jpg" alt="Product 2">
                     <p>Product Name 2</p>
-                    <p>$
+                    <p>$25.00</p>
+                    <!-- Add a link to the payment page for this product -->
+                    <a href="payment.html?product=2" class="buy-button">Buy Now</a>
+                </div>
+
+                <!-- Additional Products -->
+                <!-- Add more products here as needed -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; Merchandise Done Different. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
