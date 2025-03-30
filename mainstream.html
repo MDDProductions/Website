@@ -133,7 +133,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 MainStream Digital Dynamics. All rights reserved.</p>
+        <p>&copy; MainStream Digital Dynamics. All rights reserved.</p>
     </footer>
 
     <script>
@@ -239,7 +239,8 @@
             const iframe = activeIframes[category];
             if (iframe) {
                 const src = iframe.src;
-                iframe.src = src + "&autoplay=1";
+                // Modify the src to ensure autoplay and mute parameters are set
+                iframe.src = src.includes('autoplay=1') ? src : src + "&autoplay=1&mute=1";
             }
         }
 
