@@ -67,6 +67,12 @@
             background: rgba(0, 0, 0, 0.85);
             color: #f4f4f4;
         }
+
+        #live-stream-placeholder {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+        }
     </style>
 </head>
 <body>
@@ -131,6 +137,8 @@
     </footer>
 
     <script>
+        let activeIframes = {}; // To store references to iframes
+
         // Function to display the selected category gallery
         function showCategory(category) {
             document.querySelectorAll('.video-gallery').forEach(gallery => {
@@ -138,26 +146,67 @@
             });
 
             document.getElementById(category).classList.add('active');
+
+            // Pause all other videos
+            for (let key in activeIframes) {
+                if (activeIframes[key] && key !== category) {
+                    pauseVideo(key);
+                }
+            }
+
+            // Play the current video gallery
+            if (activeIframes[category]) {
+                playVideo(category);
+            }
         }
 
-        // Function to check if a live stream is active on YouTube
+        // List of Channel IDs to monitor (Add more channels easily by adding to this array)
+        const channels = [
+            { channelId: "UC6zbkrve6klQ28h3loPJRjg", name: "Channel 1" },  // Example Channel 1
+            { channelId: "UC7P8Hq9gXqB3DZZxu6tDJtA", name: "Channel 2" },  // Example Channel 2
+            { channelId: "UC8Pznj7TI76f-lSQ2I9QKhg", name: "Channel 3" }   // Example Channel 3
+            // Add more channels here with their respective IDs
+        ];
+
+        const apiKey = "AIzaSyAm2ka5Oog3_1aBeFoHXA6Xkro99_JuyeU"; // Replace with your YouTube API Key
+
+        // Function to check if a live stream is active for a specific channel
         async function checkLiveStream() {
-            const channelId = "UC6zbkrve6klQ28h3loPJRjg"; // Your Channel ID
-            const apiKey = "AIzaSyAm2ka5Oog3_1aBeFoHXA6Xkro99_JuyeU"; // Your YouTube API Key
-            const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&type=video&eventType=live&key=${apiKey}`;
+            let highestViewerCount = 0;
+            let liveStreamUrl = null;
 
-            const response = await fetch(url);
-            const data = await response.json();
+            for (const channel of channels) {
+                const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channel.channelId}&type=video&eventType=live&key=${apiKey}`;
+                
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json();
 
-            if (data.items && data.items.length > 0) {
-                // If there is a live stream
-                const liveStreamId = data.items[0].id.videoId;
-                document.getElementById('live-stream-placeholder').innerHTML = ` 
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/${liveStreamId}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    if (data.items && data.items.length > 0) {
+                        const liveStreamId = data.items[0].id.videoId;
+                        const viewCountUrl = `https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${liveStreamId}&key=${apiKey}`;
+                        const viewCountResponse = await fetch(viewCountUrl);
+                        const viewCountData = await viewCountResponse.json();
+
+                        const viewCount = parseInt(viewCountData.items[0].statistics.viewCount, 10);
+
+                        if (viewCount > highestViewerCount) {
+                            highestViewerCount = viewCount;
+                            liveStreamUrl = `https://www.youtube.com/embed/${liveStreamId}?autoplay=1&loop=1`;
+                        }
+                    }
+                } catch (error) {
+                    console.error(`Error checking live stream for ${channel.name}:`, error);
+                }
+            }
+
+            // Display the live stream with the highest viewers
+            if (liveStreamUrl) {
+                document.getElementById('live-stream-placeholder').innerHTML = `
+                    <iframe width="560" height="315" src="${liveStreamUrl}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 `;
             } else {
-                // If no live stream
-                document.getElementById('live-stream-placeholder').innerHTML = "No live stream is currently active.";
+                document.getElementById('live-stream-placeholder').innerHTML = "No live streams are currently active.";
             }
         }
 
@@ -173,6 +222,9 @@
             iframe.width = '100%';
             iframe.height = '400px'; // Adjust height as needed
             document.getElementById(elementId).appendChild(iframe);
+            
+            // Store the iframe reference
+            activeIframes[elementId] = iframe;
         }
 
         // Adding example playlists (Replace with your own Playlist IDs)
@@ -181,6 +233,24 @@
         createPlaylist('PLQXsb27f1wGht7VqvJVGJz7cW2gJrO0k2', 'playlist3'); // Sports
         createPlaylist('PLJ3jxY6ti22Jl2HhV2gRU5IS0V4jl6hzY', 'playlist4'); // Other
         createPlaylist('PLVQ_tAmd22JxjU3a5v1_UZqVzQUZkC_gG', 'playlist5'); // Events
+
+        // Play video for a specific category
+        function playVideo(category) {
+            const iframe = activeIframes[category];
+            if (iframe) {
+                const src = iframe.src;
+                iframe.src = src + "&autoplay=1";
+            }
+        }
+
+        // Pause video for a specific category
+        function pauseVideo(category) {
+            const iframe = activeIframes[category];
+            if (iframe) {
+                const src = iframe.src;
+                iframe.src = src.replace("&autoplay=1", "");
+            }
+        }
     </script>
 
 </body>
