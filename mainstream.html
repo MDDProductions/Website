@@ -4,200 +4,184 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MainStream Digital Dynamics</title>
-    <link rel="stylesheet" href="assets/css/style.css">
     <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #000; /* Black background */
+            color: #f4f4f4;
         }
+
+        /* Header Section */
         header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
+            text-align: center; /* Center align logo */
+            padding: 20px 0;
+        }
+
+        .logo-container img {
+            max-width: 100%; /* Make sure logo scales properly */
+            height: auto;
+        }
+
+        /* Video Gallery Section */
+        .category-navigation {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-        }
-        .header-logo {
-            height: 50px;
-        }
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        nav ul li {
-            margin-right: 20px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-        }
-        .media-section {
             padding: 20px;
-            text-align: center;
+            gap: 10px;
         }
+
         .category-navigation button {
-            margin: 10px;
-            padding: 10px 20px;
+            flex: 1;
+            margin: 0 5px;
+            padding: 10px;
+            font-size: 16px;
             cursor: pointer;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 5px;
         }
-        .category-navigation button:hover {
-            background-color: #555;
-        }
+
         .video-gallery {
-            display: none;
             margin-top: 20px;
+            display: none; /* Initially hidden */
         }
-        .video-gallery h2 {
-            margin-bottom: 20px;
+
+        .video-gallery.active {
+            display: block; /* Show active category */
         }
-        .video-item {
-            display: inline-block;
-            margin: 10px;
-        }
+
         iframe {
-            width: 300px;
-            height: 200px;
+            width: 100%;
+            height: 315px; /* Standard size for YouTube embeds */
         }
+
         footer {
             text-align: center;
             padding: 10px;
-            background-color: #333;
-            color: white;
+            background: rgba(0, 0, 0, 0.85);
+            color: #f4f4f4;
         }
     </style>
 </head>
 <body>
+
+    <!-- Header Section with Logo -->
     <header>
-        <img src="assets/images/logo.png" alt="Logo" class="header-logo">
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="monumental.html">Real Estate</a></li>
-                <li><a href="mainstream.html">Content Creation</a></li>
-                <li><a href="merchandise.html">Merchandise</a></li>
-                <li><a href="careers.html">Careers</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="assets/images/logo.png" alt="MainStream Digital Dynamics Logo" class="logo">
+            </a>
+        </div>
     </header>
 
-    <section class="media-section">
-        <h1>MainStream Digital Dynamics</h1>
+    <!-- Main Content Section -->
+    <main>
+        <section class="media-section">
+            <div class="category-navigation">
+                <button onclick="showCategory('liveStreams')">Live Streams</button>
+                <button onclick="showCategory('contentCreated')">Content Created</button>
+                <button onclick="showCategory('music')">Music</button>
+                <button onclick="showCategory('sports')">Sports</button>
+                <button onclick="showCategory('other')">Other</button>
+                <button onclick="showCategory('events')">Events</button>
+            </div>
 
-        <!-- Categories Navigation -->
-        <div class="category-navigation">
-            <button onclick="showCategory('realestate')">Real Estate</button>
-            <button onclick="showCategory('content')">Content Creation</button>
-            <button onclick="showCategory('merchandise')">Merchandise</button>
-            <button onclick="showCategory('music')">Music</button>
-            <button onclick="showCategory('events')">Events</button>
-        </div>
+            <!-- Video Galleries -->
+            <div id="liveStreams" class="video-gallery">
+                <h2>Live Streams</h2>
+                <div id="live-stream-placeholder">Checking if we're live...</div>
+            </div>
 
-        <!-- Real Estate Videos -->
-        <div id="realestate" class="video-gallery">
-            <h2>Gaming</h2>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+            <div id="contentCreated" class="video-gallery">
+                <h2>Content Created</h2>
+                <div id="playlist1"></div>
             </div>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/lYhRuDQ0g0Y" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/QFpgb8tZBbA" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/WqGvfwN5Iws" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
 
-        <!-- Content Creation Videos -->
-        <div id="content" class="video-gallery">
-            <h2>Content Creation</h2>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/lQm54H-Bz5c" frameborder="0" allowfullscreen></iframe>
+            <div id="music" class="video-gallery">
+                <h2>Music Playlists</h2>
+                <div id="playlist2"></div>
             </div>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/hhIt1eUeq4k" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/nU8FO5kIT5c" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/9ZJh3SCt7rk" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
 
-        <!-- Merchandise Videos -->
-        <div id="merchandise" class="video-gallery">
-            <h2>Showcase</h2>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/a_vgk3HU8J8" frameborder="0" allowfullscreen></iframe>
+            <div id="sports" class="video-gallery">
+                <h2>Sports Highlights</h2>
+                <div id="playlist3"></div>
             </div>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/ZJeRlk9h5aY" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/vqP3K_lMLws" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/kctRt78XoI0" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
 
-        <!-- Music Videos -->
-        <div id="music" class="video-gallery">
-            <h2>Music Videos</h2>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/3JZ_D3ELwOQ" frameborder="0" allowfullscreen></iframe>
+            <div id="other" class="video-gallery">
+                <h2>Other Videos</h2>
+                <div id="playlist4"></div>
             </div>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/ExqfT1ee8FQ" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/YJm3j6M0w1k" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
 
-        <!-- Event Videos -->
-        <div id="events" class="video-gallery">
-            <h2>Others</h2>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/kjP-Vd_lPzI" frameborder="0" allowfullscreen></iframe>
+            <div id="events" class="video-gallery">
+                <h2>Event Coverage</h2>
+                <div id="playlist5"></div>
             </div>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/0Vrlm_gbl_8" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/4tozr-tS9t4" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
-    </section>
+
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; MDDProductions. All rights reserved.</p>
+        <p>&copy; 2025 MainStream Digital Dynamics. All rights reserved.</p>
     </footer>
 
     <script>
+        // Function to display the selected category gallery
         function showCategory(category) {
-            // Hide all video galleries
-            const galleries = document.querySelectorAll('.video-gallery');
-            galleries.forEach(gallery => {
-                gallery.style.display = 'none';
+            document.querySelectorAll('.video-gallery').forEach(gallery => {
+                gallery.classList.remove('active');
             });
 
-            // Show the selected category
-            document.getElementById(category).style.display = 'block';
+            document.getElementById(category).classList.add('active');
         }
+
+        // Function to check if a live stream is active on YouTube
+        async function checkLiveStream() {
+            const channelId = "UC6zbkrve6klQ28h3loPJRjg"; // Your Channel ID
+            const apiKey = "AIzaSyAm2ka5Oog3_1aBeFoHXA6Xkro99_JuyeU"; // Your YouTube API Key
+            const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&type=video&eventType=live&key=${apiKey}`;
+
+            const response = await fetch(url);
+            const data = await response.json();
+
+            if (data.items && data.items.length > 0) {
+                // If there is a live stream
+                const liveStreamId = data.items[0].id.videoId;
+                document.getElementById('live-stream-placeholder').innerHTML = ` 
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/${liveStreamId}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                `;
+            } else {
+                // If no live stream
+                document.getElementById('live-stream-placeholder').innerHTML = "No live stream is currently active.";
+            }
+        }
+
+        // Call the checkLiveStream function when the page loads
+        window.onload = checkLiveStream;
+
+        // YouTube Playlist Embeds (You can add as many as you like)
+        function createPlaylist(playlistId, elementId) {
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://www.youtube.com/embed?listType=playlist&list=${playlistId}&autoplay=1&loop=1`;
+            iframe.frameBorder = '0';
+            iframe.allowFullscreen = true;
+            iframe.width = '100%';
+            iframe.height = '400px'; // Adjust height as needed
+            document.getElementById(elementId).appendChild(iframe);
+        }
+
+        // Adding example playlists (Replace with your own Playlist IDs)
+        createPlaylist('PLVQ_tAmd22JxjU3a5v1_UZqVzQUZkC_gG', 'playlist1'); // Content Created
+        createPlaylist('PLFZlW1GvrdSwCAxQkK5-2ctrHNzd-YEo4', 'playlist2'); // Music
+        createPlaylist('PLQXsb27f1wGht7VqvJVGJz7cW2gJrO0k2', 'playlist3'); // Sports
+        createPlaylist('PLJ3jxY6ti22Jl2HhV2gRU5IS0V4jl6hzY', 'playlist4'); // Other
+        createPlaylist('PLVQ_tAmd22JxjU3a5v1_UZqVzQUZkC_gG', 'playlist5'); // Events
     </script>
+
 </body>
 </html>

@@ -136,6 +136,18 @@ body {
   margin: 100px 0 50px; /* Spacing between navigation and content */
 }
 
+.category-navigation {
+  display: flex; /* Enables flexbox layout */
+  justify-content: space-between; /* Distributes buttons evenly */
+  padding: 0 10px; /* Optional: Adds spacing on the sides */
+}
+
+.category-navigation button {
+  flex: 1; /* Ensures buttons take equal space */
+  margin: 0 5px; /* Adds spacing between buttons */
+}
+
+
 .logo {
   max-height: 250px; /* Logo size retained */
   opacity: 0.8; /* Semi-transparent */

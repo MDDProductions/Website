@@ -8,17 +8,29 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- JavaScript for slideshow functionality -->
     <script src="assets/js/slideshow.js" defer></script>
+    <style>
+        /* Updated styles with !important to ensure changes reflect */
+        .logo-container a img {
+            width: 350px !important; /* Ensure the logo is very large */
+            transition: transform 0.6s ease-in-out; /* Smooth hover effect */
+        }
+
+        .logo-container a img:hover {
+            transform: scale(1.8) rotate(30deg) translateY(-20px) translateX(20px) !important; /* Force hover animation */
+        }
+    </style>
 </head>
 <body>
 
     <!-- Header Section -->
     <header>
         <div class="logo-container">
-            <img class="logo" src="assets/images/logo.png" alt="Monumental Dwelling Logo">
+            <a href="index.html">
+                <img class="logo" src="assets/images/logo.png" alt="Monumental Dwelling Logo">
+            </a>
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
                 <li><a href="mainstream.html">Content Creation</a></li>
                 <li><a href="merchandise.html">Merchandise</a></li>
                 <li><a href="contact.html">Contact</a></li>
