@@ -1,50 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Holding Company</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website with Clickable Images and Links</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="hero">
-        <div class="overlay">
-            <img class="logo" src="assets/images/logo.png" alt="Holding Company Logo">
-            <nav class="navbar">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="monumental.html">Real Estate</a></li>
-                    <li><a href="mainstream.html">Content Creation</a></li>
-                    <li><a href="merchandise.html">Merchandise</a></li>
-                    <li><a href="careers.html">Careers</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <!-- Header Section -->
+  <header>
+    <img src="assets/images/logo.png" class="logo" alt="Site Logo">
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Real Estate</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <section class="intro">
-        <h1>Welcome to Our Holding Company</h1>
-        <p>We oversee multiple businesses spanning real estate, digital content, and merchandise.</p>
-        <div class="business-links">
-            <a href="monumental.html">
-                <img src="assets/images/realestate.jpg" alt="Real Estate">
-                <p>Monumental Dwelling Dynamics</p>
-            </a>
-            <a href="mainstream.html">
-                <img src="assets/images/digital.jpg" alt="Content Creation">
-                <p>Mainstream Digital Dynamics</p>
-            </a>
-            <a href="merchandise.html">
-                <img src="assets/images/merch.jpg" alt="Merchandise">
-                <p>Merchandise Done Different</p>
-            </a>
-        </div>
-    </section>
+  <!-- Links Section -->
+  <section class="top-links">
+    <!-- Monumental Dwelling Dynamics -->
+    <div class="link-item">
+      <a href="https://example.com/monumental-dwelling-dynamics" target="_blank">
+        <img src="assets/images/monumental-dwelling.jpg" alt="Monumental Dwelling" class="link-image">
+        <p>Monumental Dwelling Dynamics</p>
+      </a>
+    </div>
 
-    <footer>
-        <p>&copy; 2025 Holding Company. All rights reserved.</p>
-    </footer>
+    <!-- Mainstream Digital Dynamics -->
+    <div class="link-item">
+      <a href="https://example.com/mainstream-digital-dynamics" target="_blank">
+        <img src="assets/images/mainstream-digital.jpg" alt="Mainstream Digital" class="link-image">
+        <p>Mainstream Digital Dynamics</p>
+      </a>
+    </div>
+
+    <!-- Merchandise -->
+    <div class="link-item">
+      <a href="https://example.com/merchandise" target="_blank">
+        <img src="assets/images/merchandise.jpg" alt="Merchandise" class="link-image">
+        <p>Merchandise Done Different</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2025 Your Website Name. All rights reserved.</p>
+  </footer>
 </body>
 </html>
