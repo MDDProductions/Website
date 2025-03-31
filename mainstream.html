@@ -5,39 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MainStream Digital Dynamics</title>
 
-    <!-- Favicon Link (place this line inside the <head> section) -->
     <link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
-    <!-- OR, if you have a PNG file -->
-    <!-- <link rel="icon" href="assets/images/favicon.png" type="image/png"> -->
 
     <style>
-        /* General Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Body Styling */
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            background-color: #000; /* Black background */
+            background-color: #000;
             color: #f4f4f4;
         }
 
-        /* Header Section */
         header {
-            text-align: center; /* Center align logo */
+            text-align: center;
             padding: 20px 0;
         }
 
-        .logo-container img {
-            max-width: 100%; /* Make sure logo scales properly */
-            height: auto;
+        ..logo-container img {
+             max-width: 45%
+             height: auto;
         }
 
-        /* Video Gallery Section */
         .category-navigation {
             display: flex;
             justify-content: space-between;
@@ -55,16 +48,16 @@
 
         .video-gallery {
             margin-top: 20px;
-            display: none; /* Initially hidden */
+            display: none;
         }
 
         .video-gallery.active {
-            display: block; /* Show active category */
+            display: block;
         }
 
-        iframe {
+        video {
             width: 100%;
-            height: 500px; /* Increased height to utilize empty space */
+            height: 500;
         }
 
         footer {
@@ -73,17 +66,10 @@
             background: rgba(0, 0, 0, 0.85);
             color: #f4f4f4;
         }
-
-        #live-stream-placeholder {
-            text-align: center;
-            padding: 20px;
-            background-color: #333;
-        }
     </style>
 </head>
 <body>
 
-    <!-- Header Section with Logo -->
     <header>
         <div class="logo-container">
             <a href="index.html">
@@ -92,7 +78,6 @@
         </div>
     </header>
 
-    <!-- Main Content Section -->
     <main>
         <section class="media-section">
             <div class="category-navigation">
@@ -104,7 +89,6 @@
                 <button onclick="showCategory('events')">Events</button>
             </div>
 
-            <!-- Video Galleries -->
             <div id="liveStreams" class="video-gallery">
                 <h2>Live Streams</h2>
                 <div id="live-stream-placeholder">Checking if we're live...</div>
@@ -112,27 +96,27 @@
 
             <div id="contentCreated" class="video-gallery">
                 <h2>Content Created</h2>
-                <div id="playlist1"></div>
+                <video id="videoContentCreated" controls autoplay loop muted></video>
             </div>
 
             <div id="music" class="video-gallery">
                 <h2>Music Playlists</h2>
-                <div id="playlist2"></div>
+                <video id="videoMusic" controls autoplay loop muted></video>
             </div>
 
             <div id="sports" class="video-gallery">
                 <h2>Sports Highlights</h2>
-                <div id="playlist3"></div>
+                <video id="videoSports" controls autoplay loop muted></video>
             </div>
 
             <div id="other" class="video-gallery">
                 <h2>Other Videos</h2>
-                <div id="playlist4"></div>
+                <video id="videoOther" controls autoplay loop muted></video>
             </div>
 
             <div id="events" class="video-gallery">
                 <h2>Event Coverage</h2>
-                <div id="playlist5"></div>
+                <video id="videoEvents" controls autoplay loop muted></video>
             </div>
 
         </section>
@@ -163,7 +147,31 @@
             // Play the current video gallery
             if (activeIframes[category]) {
                 playVideo(category);
+            } else {
+                playRandomVideo(category); // This is added to play random video when selecting a category
             }
+        }
+
+        // Function to play a random video from a folder
+        function playRandomVideo(category) {
+            let videoElement = document.getElementById(`video${capitalizeFirstLetter(category)}`);
+            const folderPath = `${category}/`;  // Folder name is the category name
+            const videoFiles = [
+                `${folderPath}video1.mp4`, // Replace with actual video file names in your folder
+                `${folderPath}video2.mp4`,
+                `${folderPath}video3.mp4`,
+                `${folderPath}video4.mp4`,
+                `${folderPath}video5.mp4`
+            ];
+
+            const randomVideo = videoFiles[Math.floor(Math.random() * videoFiles.length)];
+            videoElement.src = randomVideo;
+            videoElement.play();
+        }
+
+        // Capitalizes the first letter of the category for video element IDs (contentCreated -> ContentCreated)
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
         }
 
         // List of Channel IDs to monitor (Add more channels easily by adding to this array)
@@ -218,58 +226,26 @@
         // Call the checkLiveStream function when the page loads
         window.onload = checkLiveStream;
 
-        // YouTube Playlist Embeds (You can add as many as you like)
-        function createPlaylist(playlistId, elementId) {
-            const iframe = document.createElement('iframe');
-            iframe.src = `https://www.youtube.com/embed?listType=playlist&list=${playlistId}&autoplay=1&loop=1&mute=1`;
-            iframe.frameBorder = '0';
-            iframe.allowFullscreen = true;
-            iframe.width = '100%';
-            iframe.height = '500px'; // Increased height for better usage of empty space
-            document.getElementById(elementId).appendChild(iframe);
-            
-            // Store the iframe reference
-            activeIframes[elementId] = iframe;
-        }
+        // Call this to show the first category on load (optional)
+        window.onload = () => showCategory('contentCreated');
 
-        // Adding example playlists (Replace with your own Playlist IDs)
-        createPlaylist('PLVQ_tAmd22JxjU3a5v1_UZqVzQUZkC_gG', 'playlist1'); // Content Created
-        createPlaylist('PLFZlW1GvrdSwCAxQkK5-2ctrHNzd-YEo4', 'playlist2'); // Music
-        createPlaylist('PLQXsb27f1wGht7VqvJVGJz7cW2gJrO0k2', 'playlist3'); // Sports
-        createPlaylist('PLJ3jxY6ti22Jl2HhV2gRU5IS0V4jl6hzY', 'playlist4'); // Other
-        createPlaylist('PLVQ_tAmd22JxjU3a5v1_UZqVzQUZkC_gG', 'playlist5'); // Events
-
-        // Play video for a specific category
-        function playVideo(category) {
-            const iframe = activeIframes[category];
-            if (iframe) {
-                let src = iframe.src;
-                if (!src.includes('autoplay=1')) {
-                    // Ensure autoplay and mute are active
-                    iframe.src = src + "&autoplay=1&mute=1";
-                }
-            }
-        }
-
-        // Pause video for a specific category
-        function pauseVideo(category) {
-            const iframe = activeIframes[category];
-            if (iframe) {
-                let src = iframe.src;
-                // Remove autoplay and mute to pause the video
-                iframe.src = src.replace("&autoplay=1", "").replace("&mute=1", "");
-            }
-        }
-
-        // Detect tab visibility change and pause videos when the tab is not visible
+        // Detect tab visibility change and pause/unmute videos when the tab is not visible
         document.addEventListener('visibilitychange', function () {
+            const videos = document.querySelectorAll('video');
             if (document.hidden) {
-                for (let category in activeIframes) {
-                    pauseVideo(category);
-                }
+                // Pause and mute videos when the tab is not visible
+                videos.forEach(video => {
+                    video.pause();
+                    video.muted = true;
+                });
+            } else {
+                // Unmute and resume videos when the tab is active
+                videos.forEach(video => {
+                    video.muted = false;
+                    video.play();
+                });
             }
         });
-
     </script>
 
 </body>
