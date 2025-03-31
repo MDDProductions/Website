@@ -145,6 +145,44 @@
       bottom: 0;
       width: 100%;
     }
+
+    /* Media Queries for Responsiveness */
+    @media (max-width: 768px) {
+      .logo-container {
+        margin: 50px 0;
+      }
+
+      .logo {
+        max-height: 300px; /* Resize logo for smaller screens */
+      }
+
+      .top-links {
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px; /* Space between link items */
+      }
+
+      .link-item {
+        flex: none; /* Remove equal width for links */
+        width: 80%; /* Make links take 80% width on small screens */
+        margin: 10px auto; /* Center the links */
+      }
+
+      .about-us {
+        padding: 30px 10px;
+        max-width: 90%; /* Allow the About Us section to be responsive */
+      }
+
+      .navigation ul {
+        flex-direction: column; /* Stack navigation items vertically */
+        gap: 10px;
+      }
+
+      .navigation ul li a {
+        font-size: 1rem; /* Smaller font size for navigation on mobile */
+        padding: 8px 10px;
+      }
+    }
   </style>
 </head>
 <body>
