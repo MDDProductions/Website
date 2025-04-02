@@ -1,12 +1,10 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>  
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MainStream Digital Dynamics</title>
-
     <link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
-
     <style>
         * {
             margin: 0;
@@ -26,24 +24,35 @@
             padding: 20px 0;
         }
 
-        ..logo-container img {
-             max-width: 45%
-             height: auto;
+        .logo-container img {
+            max-width: 100%; /* Make logo responsive */
+            height: auto;
         }
 
+        /* Category Navigation */
         .category-navigation {
             display: flex;
-            justify-content: space-between;
+            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+            justify-content: space-around;
             padding: 20px;
             gap: 10px;
         }
 
         .category-navigation button {
             flex: 1;
-            margin: 0 5px;
+            margin: 5px;
             padding: 10px;
-            font-size: 16px;
+            font-size: 14px;
             cursor: pointer;
+            background-color: #004ad4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .category-navigation button:hover {
+            background-color: #42a5f5;
         }
 
         .video-gallery {
@@ -57,7 +66,8 @@
 
         video {
             width: 100%;
-            height: 500;
+            height: auto;
+            max-height: 500px; /* Ensure the video doesn't overflow */
         }
 
         footer {
@@ -65,6 +75,34 @@
             padding: 10px;
             background: rgba(0, 0, 0, 0.85);
             color: #f4f4f4;
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .category-navigation {
+                flex-direction: column; /* Stack buttons vertically on smaller screens */
+            }
+
+            .category-navigation button {
+                font-size: 16px;
+                padding: 15px;
+            }
+
+            header {
+                padding: 10px 0;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .category-navigation button {
+                font-size: 14px; /* Adjust button text size on very small screens */
+                padding: 12px;
+            }
+
+            video {
+                height: auto; /* Allow video to scale correctly */
+                max-height: 300px; /* Set a max height for videos on small screens */
+            }
         }
     </style>
 </head>
@@ -152,20 +190,38 @@
             }
         }
 
-        // Function to play a random video from a folder
+        // Function to play a random video from a list of links
         function playRandomVideo(category) {
             let videoElement = document.getElementById(`video${capitalizeFirstLetter(category)}`);
-            const folderPath = `${category}/`;  // Folder name is the category name
-            const videoFiles = [
-                `${folderPath}video1.mp4`, // Replace with actual video file names in your folder
-                `${folderPath}video2.mp4`,
-                `${folderPath}video3.mp4`,
-                `${folderPath}video4.mp4`,
-                `${folderPath}video5.mp4`
-            ];
+            const videoLinks = {
+                contentCreated: [
+                    "https://www.youtube.com/shorts/rbpBZ2Ypblk", // Add real YouTube/TikTok links
+                    "https://www.youtube.com/watch?v=sampleLink2",
+                    "https://www.tiktok.com/@user/video/1234567890"
+                ],
+                music: [
+                    "https://www.youtube.com/watch?v=sampleLink3", 
+                    "https://www.youtube.com/watch?v=sampleLink4",
+                    "https://www.tiktok.com/@user/video/2345678901"
+                ],
+                sports: [
+                    "https://www.youtube.com/watch?v=sampleLink5",
+                    "https://www.youtube.com/watch?v=sampleLink6",
+                    "https://www.tiktok.com/@user/video/3456789012"
+                ],
+                other: [
+                    "https://www.youtube.com/watch?v=sampleLink7", 
+                    "https://www.tiktok.com/@user/video/4567890123"
+                ],
+                events: [
+                    "https://www.youtube.com/watch?v=sampleLink8", 
+                    "https://www.tiktok.com/@user/video/5678901234"
+                ]
+            };
 
-            const randomVideo = videoFiles[Math.floor(Math.random() * videoFiles.length)];
-            videoElement.src = randomVideo;
+            const links = videoLinks[category];
+            const randomLink = links[Math.floor(Math.random() * links.length)];
+            videoElement.src = randomLink;
             videoElement.play();
         }
 
@@ -216,7 +272,7 @@
             // Display the live stream with the highest viewers
             if (liveStreamUrl) {
                 document.getElementById('live-stream-placeholder').innerHTML = `
-                    <iframe width="560" height="315" src="${liveStreamUrl}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <iframe width="100%" height="auto" src="${liveStreamUrl}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 `;
             } else {
                 document.getElementById('live-stream-placeholder').innerHTML = "No live streams are currently active.";
@@ -228,24 +284,6 @@
 
         // Call this to show the first category on load (optional)
         window.onload = () => showCategory('contentCreated');
-
-        // Detect tab visibility change and pause/unmute videos when the tab is not visible
-        document.addEventListener('visibilitychange', function () {
-            const videos = document.querySelectorAll('video');
-            if (document.hidden) {
-                // Pause and mute videos when the tab is not visible
-                videos.forEach(video => {
-                    video.pause();
-                    video.muted = true;
-                });
-            } else {
-                // Unmute and resume videos when the tab is active
-                videos.forEach(video => {
-                    video.muted = false;
-                    video.play();
-                });
-            }
-        });
     </script>
 
 </body>
