@@ -137,60 +137,33 @@
             'UCL9R2XxY0Ew8ls5xtXMJ8-Q'  // Example Channel ID (replace with actual channel IDs)
         ];
 
-        // Function to fetch live streams from multiple channels
-        function fetchLiveStreams() {
-            let liveStreams = [];
-
-            // Loop through each channel ID
-            channelIds.forEach(channelId => {
-                fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&eventType=live&type=video`)
-                    .then(response => response.json())
-                    .then(data => {
-                        const liveVideos = data.items;
-
-                        liveVideos.forEach(video => {
-                            liveStreams.push({
-                                videoId: video.id.videoId,
-                                title: video.snippet.title,
-                                channelId: channelId
-                            });
-                        });
-
-                        // Once all live videos are fetched, get their details
-                        fetchLiveStreamDetails(liveStreams);
-                    })
-                    .catch(error => console.error('Error fetching live videos:', error));
-            });
+        // Function to handle YouTube, YouTube Shorts, and TikTok URLs
+        function embedVideo(url, category) {
+            const iframeElement = document.getElementById(`iframe${category.charAt(0).toUpperCase() + category.slice(1)}`);
+            if (url.includes("youtube.com/watch")) {
+                const videoId = getVideoId(url);
+                iframeElement.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`;
+            } else if (url.includes("youtube.com/shorts")) {
+                const videoId = getVideoId(url);
+                iframeElement.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`;
+            } else if (url.includes("tiktok.com")) {
+                const videoId = getTikTokId(url);
+                iframeElement.src = `https://www.tiktok.com/embed/${videoId}`;
+            }
         }
 
-        // Function to get view counts of live streams and display the most viewed one
-        function fetchLiveStreamDetails(liveStreams) {
-            const viewPromises = liveStreams.map(stream => {
-                return fetch(`https://www.googleapis.com/youtube/v3/videos?key=${apiKey}&id=${stream.videoId}&part=statistics`)
-                    .then(response => response.json())
-                    .then(data => {
-                        const views = data.items[0].statistics.viewCount;
-                        stream.views = views;
-                    });
-            });
-
-            // Once all view counts are fetched, find and display the most viewed stream
-            Promise.all(viewPromises).then(() => {
-                const mostViewedStream = getMostViewedLiveStream(liveStreams);
-                displayLiveStream(mostViewedStream);
-            });
+        // Function to get video ID from YouTube URL
+        function getVideoId(url) {
+            const regex = /(?:https?:\/\/(?:www\.)?youtube\.com\/(?:watch\?v=|shorts\/))([a-zA-Z0-9_-]{11})/;
+            const match = url.match(regex);
+            return match ? match[1] : null;
         }
 
-        // Function to find the live stream with the most views
-        function getMostViewedLiveStream(liveStreams) {
-            return liveStreams.reduce((max, stream) => (stream.views > max.views ? stream : max), liveStreams[0]);
-        }
-
-        // Function to display the most viewed live stream in the iframe
-        function displayLiveStream(mostViewedStream) {
-            const iframe = document.getElementById('iframeLiveStreams');
-            iframe.src = `https://www.youtube.com/embed/${mostViewedStream.videoId}?autoplay=1&mute=1`;
-            console.log(`Displaying stream: ${mostViewedStream.title} with ${mostViewedStream.views} views`);
+        // Function to get video ID from TikTok URL
+        function getTikTokId(url) {
+            const regex = /(?:https?:\/\/(?:www\.)?tiktok\.com\/.*\/)(\d+)/;
+            const match = url.match(regex);
+            return match ? match[1] : null;
         }
 
         function showCategory(category) {
@@ -208,14 +181,14 @@
                     "https://www.youtube.com/watch?v=wLFPWaN2lWw", 
                     "https://www.youtube.com/shorts/5qv2pg0FB4A",
                     "https://www.tiktok.com/@mddproductions.tv/video/7197828775294291246"
-                ],
+                    ],
                 music: [
                     "https://www.youtube.com/watch?v=kJQP7kiw5Fk", 
                     "https://www.youtube.com/watch?v=9bZkp7q19f0"
                 ],
                 sports: [
                     "https://www.youtube.com/watch?v=4_vSrzndXp4", 
-                    "https://www.youtube.com/watch?v=ZzT_79ddH_U"
+                    "https://www.tiktok.com/@espn/video/7056709805596895489"
                 ],
                 other: [
                     "https://www.youtube.com/watch?v=lYQZ7fLZWrw", 
@@ -227,17 +200,10 @@
                 ]
             };
             const randomLink = videoLinks[category][Math.floor(Math.random() * videoLinks[category].length)];
-            iframeElement.src = `https://www.youtube.com/embed/${getVideoId(randomLink)}?autoplay=1&mute=1`;
-        }
-
-        function getVideoId(url) {
-            const regex = /(?:https?:\/\/(?:www\.)?youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-            const match = url.match(regex);
-            return match ? match[1] : null;
+            embedVideo(randomLink, category);
         }
 
         window.onload = () => {
-            fetchLiveStreams(); // Start the fetching process when the page loads
             showCategory('contentCreated'); // Set default category to 'contentCreated'
         };
     </script>
