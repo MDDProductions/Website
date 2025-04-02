@@ -1,4 +1,4 @@
-<!DOCTYPE html>  
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,28 +6,83 @@
     <title>MainStream Digital Dynamics</title>
     <link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Arial', sans-serif; line-height: 1.6; background-color: #000; color: #f4f4f4; }
-        header { text-align: center; padding: 20px 0; }
-        .logo-container img { max-width: 100%; height: auto; }
-        .category-navigation { display: flex; flex-wrap: wrap; justify-content: space-around; padding: 20px; gap: 10px; }
-        .category-navigation button { flex: 1; margin: 5px; padding: 10px; font-size: 14px; cursor: pointer; background-color: #004ad4; color: #fff; border: none; border-radius: 5px; transition: background-color 0.3s ease; }
-        .category-navigation button:hover { background-color: #42a5f5; }
-        .video-gallery { margin-top: 20px; display: none; text-align: center; }
-        .video-gallery.active { display: block; }
-        iframe { width: 80%; height: 400px; border: none; }
-        footer { text-align: center; padding: 10px; background: rgba(0, 0, 0, 0.85); color: #f4f4f4; }
-        @media screen and (max-width: 768px) { .category-navigation { flex-direction: column; } iframe { width: 100%; height: 300px; } }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #000;
+            color: #f4f4f4;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .logo-container img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .category-navigation {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            gap: 10px;
+        }
+
+        .category-navigation button {
+            flex: 1;
+            margin: 5px;
+            padding: 10px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #004ad4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .category-navigation button:hover {
+            background-color: #42a5f5;
+        }
+
+        .video-gallery {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        iframe {
+            width: 80%;
+            height: 400px;
+            border: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.85);
+            color: #f4f4f4;
+        }
     </style>
 </head>
 <body>
+
     <header>
         <div class="logo-container">
             <a href="index.html">
-                <img src="assets/images/logo.png" alt="MainStream Digital Dynamics Logo">
+                <img src="assets/images/logo.png" alt="MainStream Digital Dynamics Logo" class="logo">
             </a>
         </div>
     </header>
+
     <main>
         <section class="media-section">
             <div class="category-navigation">
@@ -38,94 +93,154 @@
                 <button onclick="showCategory('other')">Other</button>
                 <button onclick="showCategory('events')">Events</button>
             </div>
-            <div id="liveStreams" class="video-gallery">
+
+            <div id="liveStreams" class="video-gallery active">
                 <h2>Live Streams</h2>
                 <iframe id="iframeLiveStreams" allowfullscreen></iframe>
             </div>
+
             <div id="contentCreated" class="video-gallery">
                 <h2>Content Created</h2>
                 <iframe id="iframeContentCreated" allowfullscreen></iframe>
             </div>
+
             <div id="music" class="video-gallery">
-                <h2>Music</h2>
+                <h2>Music Playlists</h2>
                 <iframe id="iframeMusic" allowfullscreen></iframe>
             </div>
+
             <div id="sports" class="video-gallery">
                 <h2>Sports</h2>
                 <iframe id="iframeSports" allowfullscreen></iframe>
             </div>
+
             <div id="other" class="video-gallery">
                 <h2>Other</h2>
                 <iframe id="iframeOther" allowfullscreen></iframe>
             </div>
+
             <div id="events" class="video-gallery">
                 <h2>Events</h2>
                 <iframe id="iframeEvents" allowfullscreen></iframe>
             </div>
         </section>
     </main>
+
     <footer>
         <p>&copy; MainStream Digital Dynamics. All rights reserved.</p>
     </footer>
+
     <script>
-        const liveStreamChannels = [
-            "UC4R8DWoMoI7CAwX8_LjQHig",
-            "UCX6OQ3DkcsbYNE6H8uQQuVA"
+        const apiKey = 'AIzaSyDg9tiOWJuy-4iIlhGNrd6t8FELnWCImI4'; // Your YouTube API key
+        const channelIds = [
+            'UCXgGY0wkgOzynnHvZ6K6lKQ', // Example Channel ID (replace with actual channel IDs)
+            'UCL9R2XxY0Ew8ls5xtXMJ8-Q'  // Example Channel ID (replace with actual channel IDs)
         ];
-        const videoLinks = {
-            contentCreated: [
-                "https://www.youtube.com/watch?v=Ln9eBilYIis", 
-                "https://www.youtube.com/watch?v=F2AMWMmj2X0",
-                "https://www.youtube.com/shorts/5qv2pg0FB4A"
-            ],
-            music: [
-                "https://www.tiktok.com/@mddproductions.tv/video/7217076822410808619", 
-                "https://www.tiktok.com/@mddproductions.tv/video/7217833627562888490"
-            ],
-            sports: [
-                "https://www.youtube.com/watch?v=9C1nr6UMHhY",
-                "https://www.youtube.com/watch?v=bhRmJfwV-Zw"
-            ],
-            other: [
-                "https://www.youtube.com/watch?v=tgbNymZ7vqY"
-            ],
-            events: [
-                "https://www.youtube.com/watch?v=jNQXAC9IVRw"
-            ]
-        };
-        async function fetchLiveStream() {
-            let highestViewers = 0, bestLiveVideo = "";
-            for (let channel of liveStreamChannels) {
-                let response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channel}&eventType=live&type=video&key=AIzaSyDg9tiOWJuy-4iIlhGNrd6t8FELnWCImI4`);
-                let data = await response.json();
-                if (data.items.length > 0) {
-                    let videoId = data.items[0].id.videoId;
-                    let statsResponse = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=liveStreamingDetails&id=${videoId}&key=AIzaSyDg9tiOWJuy-4iIlhGNrd6t8FELnWCImI4`);
-                    let statsData = await statsResponse.json();
-                    let viewers = parseInt(statsData.items[0].liveStreamingDetails.concurrentViewers || 0);
-                    if (viewers > highestViewers) {
-                        highestViewers = viewers;
-                        bestLiveVideo = videoId;
-                    }
-                }
-            }
-            document.getElementById("iframeLiveStreams").src = bestLiveVideo ? `https://www.youtube.com/embed/${bestLiveVideo}?autoplay=1` : "about:blank";
+
+        // Function to fetch live streams from multiple channels
+        function fetchLiveStreams() {
+            let liveStreams = [];
+
+            // Loop through each channel ID
+            channelIds.forEach(channelId => {
+                fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&eventType=live&type=video`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const liveVideos = data.items;
+
+                        liveVideos.forEach(video => {
+                            liveStreams.push({
+                                videoId: video.id.videoId,
+                                title: video.snippet.title,
+                                channelId: channelId
+                            });
+                        });
+
+                        // Once all live videos are fetched, get their details
+                        fetchLiveStreamDetails(liveStreams);
+                    })
+                    .catch(error => console.error('Error fetching live videos:', error));
+            });
         }
+
+        // Function to get view counts of live streams and display the most viewed one
+        function fetchLiveStreamDetails(liveStreams) {
+            const viewPromises = liveStreams.map(stream => {
+                return fetch(`https://www.googleapis.com/youtube/v3/videos?key=${apiKey}&id=${stream.videoId}&part=statistics`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const views = data.items[0].statistics.viewCount;
+                        stream.views = views;
+                    });
+            });
+
+            // Once all view counts are fetched, find and display the most viewed stream
+            Promise.all(viewPromises).then(() => {
+                const mostViewedStream = getMostViewedLiveStream(liveStreams);
+                displayLiveStream(mostViewedStream);
+            });
+        }
+
+        // Function to find the live stream with the most views
+        function getMostViewedLiveStream(liveStreams) {
+            return liveStreams.reduce((max, stream) => (stream.views > max.views ? stream : max), liveStreams[0]);
+        }
+
+        // Function to display the most viewed live stream in the iframe
+        function displayLiveStream(mostViewedStream) {
+            const iframe = document.getElementById('iframeLiveStreams');
+            iframe.src = `https://www.youtube.com/embed/${mostViewedStream.videoId}?autoplay=1&mute=1`;
+            console.log(`Displaying stream: ${mostViewedStream.title} with ${mostViewedStream.views} views`);
+        }
+
         function showCategory(category) {
-            document.querySelectorAll('.video-gallery').forEach(gallery => gallery.classList.remove('active'));
+            document.querySelectorAll('.video-gallery').forEach(gallery => {
+                gallery.classList.remove('active');
+            });
             document.getElementById(category).classList.add('active');
-            if (category === 'liveStreams') fetchLiveStream();
-            else playRandomVideo(category);
+            if (category !== 'liveStreams') playRandomVideo(category);
         }
+
         function playRandomVideo(category) {
             let iframeElement = document.getElementById(`iframe${category.charAt(0).toUpperCase() + category.slice(1)}`);
-            let videos = videoLinks[category] || [];
-            if (videos.length > 0) {
-                let randomLink = videos[Math.floor(Math.random() * videos.length)];
-                iframeElement.src = randomLink.replace("tiktok.com/", "www.tiktok.com/embed/");
-            }
+            const videoLinks = {
+                contentCreated: [
+                    "https://www.youtube.com/watch?v=wLFPWaN2lWw", 
+                    "https://www.youtube.com/shorts/5qv2pg0FB4A",
+                    "https://www.tiktok.com/@mddproductions.tv/video/7197828775294291246"
+                ],
+                music: [
+                    "https://www.youtube.com/watch?v=kJQP7kiw5Fk", 
+                    "https://www.youtube.com/watch?v=9bZkp7q19f0"
+                ],
+                sports: [
+                    "https://www.youtube.com/watch?v=4_vSrzndXp4", 
+                    "https://www.youtube.com/watch?v=ZzT_79ddH_U"
+                ],
+                other: [
+                    "https://www.youtube.com/watch?v=lYQZ7fLZWrw", 
+                    "https://www.youtube.com/watch?v=GVJwXg2-57Y"
+                ],
+                events: [
+                    "https://www.youtube.com/watch?v=0hYOvQ9K9Jk", 
+                    "https://www.youtube.com/watch?v=w2lBrZ0D67A"
+                ]
+            };
+            const randomLink = videoLinks[category][Math.floor(Math.random() * videoLinks[category].length)];
+            iframeElement.src = `https://www.youtube.com/embed/${getVideoId(randomLink)}?autoplay=1&mute=1`;
         }
-        window.onload = () => showCategory('contentCreated');
+
+        function getVideoId(url) {
+            const regex = /(?:https?:\/\/(?:www\.)?youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+            const match = url.match(regex);
+            return match ? match[1] : null;
+        }
+
+        window.onload = () => {
+            fetchLiveStreams(); // Start the fetching process when the page loads
+            showCategory('contentCreated'); // Set default category to 'contentCreated'
+        };
     </script>
+
 </body>
 </html>
