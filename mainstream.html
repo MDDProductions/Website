@@ -57,6 +57,7 @@
         .video-gallery {
             margin-top: 20px;
             text-align: center;
+            display: none;
         }
 
         iframe {
@@ -70,6 +71,14 @@
             padding: 10px;
             background: rgba(0, 0, 0, 0.85);
             color: #f4f4f4;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .inactive {
+            display: none;
         }
     </style>
 </head>
@@ -87,41 +96,14 @@
         <section class="media-section">
             <div class="category-navigation">
                 <button onclick="showCategory('liveStreams')">Live Streams</button>
-                <button onclick="showCategory('contentCreated')">Content Created</button>
-                <button onclick="showCategory('music')">Music</button>
-                <button onclick="showCategory('sports')">Sports</button>
-                <button onclick="showCategory('other')">Other</button>
-                <button onclick="showCategory('events')">Events</button>
+                <button onclick="showCategory('youtubeVideos')">YouTube Videos</button>
+                <button onclick="showCategory('youtubeShorts')">YouTube Shorts</button>
+                <button onclick="showCategory('tiktokVideos')">TikTok</button>
             </div>
 
-            <div id="liveStreams" class="video-gallery active">
-                <h2>Live Streams</h2>
-                <iframe id="iframeLiveStreams" allowfullscreen></iframe>
-            </div>
-
-            <div id="contentCreated" class="video-gallery">
-                <h2>Content Created</h2>
-                <iframe id="iframeContentCreated" allowfullscreen></iframe>
-            </div>
-
-            <div id="music" class="video-gallery">
-                <h2>Music Playlists</h2>
-                <iframe id="iframeMusic" allowfullscreen></iframe>
-            </div>
-
-            <div id="sports" class="video-gallery">
-                <h2>Sports</h2>
-                <iframe id="iframeSports" allowfullscreen></iframe>
-            </div>
-
-            <div id="other" class="video-gallery">
-                <h2>Other</h2>
-                <iframe id="iframeOther" allowfullscreen></iframe>
-            </div>
-
-            <div id="events" class="video-gallery">
-                <h2>Events</h2>
-                <iframe id="iframeEvents" allowfullscreen></iframe>
+            <!-- Video Player for all categories -->
+            <div id="videoPlayerContainer" class="video-gallery">
+                <iframe id="videoPlayer" allowfullscreen></iframe>
             </div>
         </section>
     </main>
@@ -131,80 +113,123 @@
     </footer>
 
     <script>
-        const apiKey = 'AIzaSyDg9tiOWJuy-4iIlhGNrd6t8FELnWCImI4'; // Your YouTube API key
-        const channelIds = [
-            'UCXgGY0wkgOzynnHvZ6K6lKQ', // Example Channel ID (replace with actual channel IDs)
-            'UCL9R2XxY0Ew8ls5xtXMJ8-Q'  // Example Channel ID (replace with actual channel IDs)
+        // YouTube API Key and Channel IDs for fetching videos (replace with your own)
+        const apiKey = 'AIzaSyDg9tiOWJuy-4iIlhGNrd6t8FELnWCImI4'; // Replace with your YouTube API key
+        const youtubeChannelIds = ['UC6zbkrve6klQ28h3loPJRjg']; // Replace with your channel IDs
+        const youtubeShortsPlaylistId = 'PLrEnWoR732-B5Eu7cIWknrVpAT1tQs_dC'; // Replace with your YouTube Shorts playlist ID
+
+        // TikTok Video Links (replace with your TikTok IDs)
+        const tiktokVideos = [
+            "https://www.tiktok.com/@mddproductions.tv"
         ];
 
-        // Function to handle YouTube, YouTube Shorts, and TikTok URLs
-        function embedVideo(url, category) {
-            const iframeElement = document.getElementById(`iframe${category.charAt(0).toUpperCase() + category.slice(1)}`);
+        // Fetch YouTube Videos
+        async function fetchYouTubeVideos() {
+            const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${youtubeChannelIds[0]}&part=snippet&type=video&maxResults=5`;
+            const response = await fetch(url);
+            const data = await response.json();
+            const videoLinks = data.items.map(item => `https://www.youtube.com/watch?v=${item.id.videoId}`);
+            return videoLinks;
+        }
+
+        // Fetch YouTube Shorts Videos
+        async function fetchYouTubeShorts() {
+            const url = `https://www.googleapis.com/youtube/v3/playlistItems?key=${apiKey}&playlistId=${youtubeShortsPlaylistId}&part=snippet&maxResults=5`;
+            const response = await fetch(url);
+            const data = await response.json();
+            const videoLinks = data.items.map(item => `https://www.youtube.com/shorts/${item.snippet.resourceId.videoId}`);
+            return videoLinks;
+        }
+
+        // Fetch Live Streams
+        async function fetchLiveStreams() {
+            const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${youtubeChannelIds[0]}&part=snippet&type=video&eventType=live&maxResults=5`;
+            const response = await fetch(url);
+            const data = await response.json();
+
+            // Filter live streams and sort by view count
+            const liveStreams = data.items
+                .filter(item => item.snippet.liveBroadcastContent === 'live')
+                .map(item => ({
+                    videoId: item.id.videoId,
+                    title: item.snippet.title,
+                    viewerCount: item.snippet.liveBroadcastContent === 'live' ? item.statistics.viewCount : 0
+                }))
+                .sort((a, b) => b.viewerCount - a.viewerCount); // Sort by highest viewers
+
+            return liveStreams;
+        }
+
+        // Function to embed a video
+        function embedVideo(url) {
+            const iframeElement = document.getElementById("videoPlayer");
             if (url.includes("youtube.com/watch")) {
-                const videoId = getVideoId(url);
-                iframeElement.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`;
-            } else if (url.includes("youtube.com/shorts")) {
                 const videoId = getVideoId(url);
                 iframeElement.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`;
             } else if (url.includes("tiktok.com")) {
                 const videoId = getTikTokId(url);
-                iframeElement.src = `https://www.tiktok.com/embed/${videoId}`;
+                iframeElement.src = `https://www.tiktok.com/embed/${videoId}?autoplay=1`;
             }
         }
 
-        // Function to get video ID from YouTube URL
+        // Function to extract YouTube video ID
         function getVideoId(url) {
             const regex = /(?:https?:\/\/(?:www\.)?youtube\.com\/(?:watch\?v=|shorts\/))([a-zA-Z0-9_-]{11})/;
             const match = url.match(regex);
             return match ? match[1] : null;
         }
 
-        // Function to get video ID from TikTok URL
+        // Function to extract TikTok video ID
         function getTikTokId(url) {
             const regex = /(?:https?:\/\/(?:www\.)?tiktok\.com\/.*\/)(\d+)/;
             const match = url.match(regex);
             return match ? match[1] : null;
         }
 
-        function showCategory(category) {
-            document.querySelectorAll('.video-gallery').forEach(gallery => {
-                gallery.classList.remove('active');
+        // Show category and embed a random video
+        async function showCategory(category) {
+            // Hide all categories and remove active class
+            const categories = document.querySelectorAll('.video-gallery');
+            categories.forEach((categoryDiv) => {
+                categoryDiv.classList.remove('active');
+                categoryDiv.classList.add('inactive');
             });
-            document.getElementById(category).classList.add('active');
-            if (category !== 'liveStreams') playRandomVideo(category);
+
+            // Show the selected category
+            const selectedCategory = document.getElementById("videoPlayerContainer");
+            selectedCategory.classList.remove('inactive');
+            selectedCategory.classList.add('active');
+
+            let videoLinks = [];
+
+            // Fetch video links based on the category
+            if (category === 'liveStreams') {
+                const liveStreams = await fetchLiveStreams();
+                if (liveStreams.length > 0) {
+                    const highestViewStream = liveStreams[0]; // Stream with the highest views
+                    const liveStreamUrl = `https://www.youtube.com/watch?v=${highestViewStream.videoId}`;
+                    embedVideo(liveStreamUrl); // Embed the most-viewed live stream
+                } else {
+                    alert("No live streams available at the moment.");
+                }
+            } else if (category === 'youtubeVideos') {
+                videoLinks = await fetchYouTubeVideos();
+            } else if (category === 'youtubeShorts') {
+                videoLinks = await fetchYouTubeShorts();
+            } else if (category === 'tiktokVideos') {
+                videoLinks = tiktokVideos;
+            }
+
+            // Embed a random video from the fetched links
+            if (videoLinks.length > 0) {
+                const randomLink = videoLinks[Math.floor(Math.random() * videoLinks.length)];
+                embedVideo(randomLink);
+            }
         }
 
-        function playRandomVideo(category) {
-            let iframeElement = document.getElementById(`iframe${category.charAt(0).toUpperCase() + category.slice(1)}`);
-            const videoLinks = {
-                contentCreated: [
-                    "https://www.youtube.com/watch?v=wLFPWaN2lWw", 
-                    "https://www.youtube.com/shorts/5qv2pg0FB4A",
-                    "https://www.tiktok.com/@mddproductions.tv/video/7197828775294291246"
-                    ],
-                music: [
-                    "https://www.youtube.com/watch?v=kJQP7kiw5Fk", 
-                    "https://www.youtube.com/watch?v=9bZkp7q19f0"
-                ],
-                sports: [
-                    "https://www.youtube.com/watch?v=4_vSrzndXp4", 
-                    "https://www.tiktok.com/@espn/video/7056709805596895489"
-                ],
-                other: [
-                    "https://www.youtube.com/watch?v=lYQZ7fLZWrw", 
-                    "https://www.youtube.com/watch?v=GVJwXg2-57Y"
-                ],
-                events: [
-                    "https://www.youtube.com/watch?v=0hYOvQ9K9Jk", 
-                    "https://www.youtube.com/watch?v=w2lBrZ0D67A"
-                ]
-            };
-            const randomLink = videoLinks[category][Math.floor(Math.random() * videoLinks[category].length)];
-            embedVideo(randomLink, category);
-        }
-
+        // On page load, set the default category to 'youtubeVideos'
         window.onload = () => {
-            showCategory('contentCreated'); // Set default category to 'contentCreated'
+            showCategory('youtubeVideos');
         };
     </script>
 
