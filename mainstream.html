@@ -195,8 +195,8 @@
             let videoElement = document.getElementById(`video${capitalizeFirstLetter(category)}`);
             const videoLinks = {
                 contentCreated: [
-                    "https://www.youtube.com/shorts/rbpBZ2Ypblk", // Add real YouTube/TikTok links
-                    "https://www.youtube.com/watch?v=sampleLink2",
+                    "https://www.youtube.com/shorts/rbpBZ2Ypblk", // YouTube Short
+                    "https://www.youtube.com/watch?v=sampleLink2", // Regular YouTube video
                     "https://www.tiktok.com/@user/video/1234567890"
                 ],
                 music: [
@@ -221,66 +221,28 @@
 
             const links = videoLinks[category];
             const randomLink = links[Math.floor(Math.random() * links.length)];
-            videoElement.src = randomLink;
+
+            // Check if it's a YouTube Short
+            if (randomLink.includes("youtube.com/shorts/")) {
+                videoElement.src = randomLink; // Play YouTube Short directly
+            } else {
+                videoElement.src = `https://www.youtube.com/embed/${getVideoId(randomLink)}?autoplay=1&loop=1&mute=1`; // Regular YouTube video
+            }
+
             videoElement.play();
+        }
+
+        // Extract YouTube video ID from the URL
+        function getVideoId(url) {
+            const regex = /(?:https?:\/\/(?:www\.)?youtube\.com\/(?:[^\/\n\s]+\/\S+\/|\S+\/|\S+\?v=|\S+\/\S+\/|\S+\/|\S+\S+)([a-zA-Z0-9_-]{11}))/;
+            const match = url.match(regex);
+            return match ? match[1] : null;
         }
 
         // Capitalizes the first letter of the category for video element IDs (contentCreated -> ContentCreated)
         function capitalizeFirstLetter(string) {
             return string.charAt(0).toUpperCase() + string.slice(1);
         }
-
-        // List of Channel IDs to monitor (Add more channels easily by adding to this array)
-        const channels = [
-            { channelId: "UC6zbkrve6klQ28h3loPJRjg", name: "Channel 1" },  // Example Channel 1
-            { channelId: "UC7P8Hq9gXqB3DZZxu6tDJtA", name: "Channel 2" },  // Example Channel 2
-            { channelId: "UC8Pznj7TI76f-lSQ2I9QKhg", name: "Channel 3" }   // Example Channel 3
-        ];
-
-        const apiKey = "AIzaSyAm2ka5Oog3_1aBeFoHXA6Xkro99_JuyeU"; // Replace with your YouTube API Key
-
-        // Function to check if a live stream is active for a specific channel
-        async function checkLiveStream() {
-            let highestViewerCount = 0;
-            let liveStreamUrl = null;
-
-            for (const channel of channels) {
-                const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channel.channelId}&type=video&eventType=live&key=${apiKey}`;
-                
-                try {
-                    const response = await fetch(url);
-                    const data = await response.json();
-
-                    if (data.items && data.items.length > 0) {
-                        const liveStreamId = data.items[0].id.videoId;
-                        const viewCountUrl = `https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${liveStreamId}&key=${apiKey}`;
-                        const viewCountResponse = await fetch(viewCountUrl);
-                        const viewCountData = await viewCountResponse.json();
-
-                        const viewCount = parseInt(viewCountData.items[0].statistics.viewCount, 10);
-
-                        if (viewCount > highestViewerCount) {
-                            highestViewerCount = viewCount;
-                            liveStreamUrl = `https://www.youtube.com/embed/${liveStreamId}?autoplay=1&loop=1&mute=1`;
-                        }
-                    }
-                } catch (error) {
-                    console.error(`Error checking live stream for ${channel.name}:`, error);
-                }
-            }
-
-            // Display the live stream with the highest viewers
-            if (liveStreamUrl) {
-                document.getElementById('live-stream-placeholder').innerHTML = `
-                    <iframe width="100%" height="auto" src="${liveStreamUrl}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                `;
-            } else {
-                document.getElementById('live-stream-placeholder').innerHTML = "No live streams are currently active.";
-            }
-        }
-
-        // Call the checkLiveStream function when the page loads
-        window.onload = checkLiveStream;
 
         // Call this to show the first category on load (optional)
         window.onload = () => showCategory('contentCreated');
