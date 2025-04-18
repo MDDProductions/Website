@@ -1,43 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forms</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Forms</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <style>
+    /* Reset */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #f4f4f4;
+      padding-top: 120px; /* Prevent overlap under nav */
+    }
+
+    /* Nav Styles */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #000;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 20px 0;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: #f4f4f4;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    nav ul li a:hover {
+      background-color: #004ad4;
+    }
+
+    /* Logo */
+    .logo {
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom: 100px;
+      position: relative;
+      animation: moveLogo 5s infinite alternate;
+    }
+
+    .logo a {
+      display: inline-block;
+    }
+
+    .logo img {
+      max-height: 150px;
+      filter: drop-shadow(0 0 8px #004ad4);
+      animation: scaleLogo 2s infinite alternate;
+    }
+
+    @keyframes moveLogo {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(30px);
+      }
+    }
+
+    @keyframes scaleLogo {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.2);
+      }
+    }
+
+    /* Main Content */
+    main {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    main h1 {
+      text-align: center;
+      color: #42a5f5;
+    }
+
+    .form-card {
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid #004ad4;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+    }
+
+    .form-card h2 {
+      font-size: 1.5rem;
+      color: #42a5f5;
+      margin-bottom: 10px;
+    }
+
+    .form-card p {
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    .form-card a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #004ad4;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .form-card a:hover {
+      background-color: #1a6cff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #f4f4f4;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="assets/images/logo.png" alt="Holding Company Logo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="monumental.html">Real Estate</a></li>
-                <li><a href="mainstream.html">Content Creation</a></li>
-                <li><a href="merchandise.html">Merchandise</a></li>
-                <li><a href="careers.html">Careers</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="forms.html">Forms</a></li> <!-- Active Forms Tab -->
-            </ul>
-        </nav>
-    </header>
 
-    <section>
-        <h1>Available Forms</h1>
-        <p>Please choose one of the forms below to submit your information:</p>
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="monumental.html">Real Estate</a></li>
+      <li><a href="mainstream.html">Content Creation</a></li>
+      <li><a href="merchandise.html">Merchandise</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-        <ul>
-            <li><a href="contact.html">Contact Us Form</a></li>
-            <li><a href="careers.html">Career Application Form</a></li>
-            <li><a href="media_upload.html">Media Upload Form</a></li>
-        </ul>
-    </section>
+  <!-- Logo -->
+  <div class="logo">
+    <a href="index.html">
+      <img src="assets/images/logo.png" alt="Holding Company Logo">
+    </a>
+  </div>
 
-    <footer>
-        <p>&copy; 2025 Holding Company. All rights reserved.</p>
-    </footer>
+  <!-- Main Content -->
+  <main>
+    <h1>Available Forms</h1>
+    <p>Please click below to view or download the appropriate form.</p>
+
+    <div class="form-card">
+      <h2>Job Application Form</h2>
+      <p>Submit this form if you’re interested in joining MDD Productions or its subsidiaries.</p>
+      <a href="https://drive.google.com/file/d/YOUR_FILE_ID/view" target="_blank">View/Download</a>
+    </div>
+
+    <div class="form-card">
+      <h2>Rental Application</h2>
+      <p>Apply to rent a property through Monumental Dwellings Dynamics.</p>
+      <a href="https://drive.google.com/file/d/YOUR_FILE_ID/view" target="_blank">View/Download</a>
+    </div>
+
+    <div class="form-card">
+      <h2>Media Release Form</h2>
+      <p>Submit this to authorize use of media on Mainstream Digital Dynamics platforms.</p>
+      <a href="https://drive.google.com/file/d/YOUR_FILE_ID/view" target="_blank">View/Download</a>
+    </div>
+
+    <div class="form-card">
+      <h2>Partnership Request Form</h2>
+      <p>Request to collaborate or partner with any of MDD's brands or merchandise initiatives.</p>
+      <a href="https://drive.google.com/file/d/YOUR_FILE_ID/view" target="_blank">View/Download</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; MDD Productions Forms. All rights reserved.</p>
+  </footer>
+
 </body>
 </html>
