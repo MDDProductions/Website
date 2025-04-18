@@ -242,5 +242,20 @@ footer {
   border-radius: 10px;
 }
 
+.social-links {
+  margin-top: 10px;
+}
+
+.social-links a img {
+  height: 30px;
+  margin: 0 10px;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 4px #004ad4);
+  transition: transform 0.3s;
+}
+
+.social-links a img:hover {
+  transform: scale(1.1);
+}
 
 

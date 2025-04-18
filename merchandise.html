@@ -5,29 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MerchandiseDoneDifferent</title>
   <style>
-    /* General Reset */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    /* Body Styling */
     body {
       font-family: 'Arial', sans-serif;
       line-height: 1.6;
-      background-color: #000; /* Black background */
+      background-color: #000;
       color: #f4f4f4;
     }
 
-    /* Navigation Bar */
     .navigation {
       position: fixed;
       top: 0;
       width: 100%;
       display: flex;
       justify-content: center;
-      background: rgba(0, 0, 0, 0.075); /* Dark background for navigation */
+      background: rgba(0, 0, 0, 0.075);
       z-index: 2;
       padding: 15px 0;
     }
@@ -54,32 +51,30 @@
       color: #fff;
     }
 
-    /* Centered Logo Styling */
     .logo-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 100px 0; /* Spacing between navigation and links */
+      margin: 100px 0;
     }
 
     .logo {
-      max-height: 450px; /* Logo size retained */
-      opacity: 0.5; /* Semi-transparent */
+      max-height: 450px;
+      opacity: 0.5;
       filter: drop-shadow(0 0 20px #004ad4);
       transition: transform 0.3s ease-in-out;
     }
 
     .logo:hover {
-      transform: scale(1.05); /* Hover effect */
+      transform: scale(1.05);
       filter: drop-shadow(0 0 30px #42a5f5);
     }
 
-    /* Links Section */
     .top-links {
-      display: flex; /* Arrange links horizontally */
-      justify-content: space-between; /* Distribute links equally */
+      display: flex;
+      justify-content: space-between;
       padding: 40px;
-      margin-top: 50px; /* Adjusted space below logo */
+      margin-top: 50px;
     }
 
     .link-item {
@@ -91,7 +86,7 @@
       padding: 15px;
       transition: transform 0.3s, box-shadow 0.3s;
       color: #f4f4f4;
-      flex: 1; /* Equal width for all links */
+      flex: 1;
       margin: 0 10px;
     }
 
@@ -105,12 +100,11 @@
       border-radius: 8px;
     }
 
-    /* About Us Section */
     .about-us {
       text-align: center;
-      padding: 50px 20px;
+      padding: 50px 20px 80px; /* Extra padding to prevent overlap */
       margin: 20px auto;
-      max-width: 800px; /* Restricts width */
+      max-width: 800px;
       background: rgba(0, 0, 0, 0.8);
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
@@ -129,103 +123,128 @@
       margin-bottom: 15px;
     }
 
-    /* Footer */
     footer {
       text-align: center;
-      padding: 10px;
+      padding: 20px;
       background: rgba(0, 0, 0, 0.85);
       color: #f4f4f4;
-      position: fixed;
-      bottom: 0;
       width: 100%;
     }
 
-    /* Media Queries for Responsiveness */
+    .social-links {
+      margin-top: 10px;
+    }
+
+    .social-links a img {
+      height: 30px;
+      margin: 0 10px;
+      vertical-align: middle;
+      filter: drop-shadow(0 0 4px #004ad4);
+      transition: transform 0.3s;
+    }
+
+    .social-links a img:hover {
+      transform: scale(1.1);
+    }
+
     @media (max-width: 768px) {
       .logo-container {
         margin: 50px 0;
       }
 
       .logo {
-        max-height: 300px; /* Resize logo for smaller screens */
+        max-height: 300px;
       }
 
       .top-links {
         flex-direction: column;
         padding: 20px;
-        gap: 20px; /* Space between link items */
+        gap: 20px;
       }
 
       .link-item {
-        flex: none; /* Remove equal width for links */
-        width: 80%; /* Make links take 80% width on small screens */
-        margin: 10px auto; /* Center the links */
+        flex: none;
+        width: 80%;
+        margin: 10px auto;
       }
 
       .about-us {
-        padding: 30px 10px;
-        max-width: 90%; /* Allow the About Us section to be responsive */
+        padding: 30px 10px 100px;
+        max-width: 90%;
       }
 
       .navigation ul {
-        flex-direction: column; /* Stack navigation items vertically */
+        flex-direction: column;
         gap: 10px;
       }
 
       .navigation ul li a {
-        font-size: 1rem; /* Smaller font size for navigation on mobile */
+        font-size: 1rem;
         padding: 8px 10px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Fixed Navigation Bar -->
+
+  <!-- Navigation -->
   <nav class="navigation">
     <ul>
-        <li><a href="mainstream.html">Mainstream</a></li>
-        <li><a href="monumental.html">Monumental</a></li>
-        <li><a href="contact.html">Contact</a></li>
+      <li><a href="mainstream.html">Mainstream</a></li>
+      <li><a href="monumental.html">Monumental</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Centered Logo Section -->
-  <div class="logo-container">
+  <!-- Logo -->
+<div class="logo-container">
+  <a href="index.html"> <!-- Link to homepage (adjust if your homepage file name is different) -->
     <img src="assets/images/logo.png" class="logo" alt="Site Logo">
-  </div>
+  </a>
+</div>
 
-  <!-- Links Section -->
+  <!-- Top Links -->
   <section class="top-links">
     <div class="link-item">
-        <a href="https://www.lamordusaunt.com/" target="_blank">
-            <img src="assets/images/lamor.png" alt="LaMordusAunt" class="link-image">
+      <a href="https://www.lamordusaunt.com/" target="_blank">
+        <img src="assets/images/lamor.png" alt="LaMordusAunt" class="link-image">
       </a>
     </div>
     <div class="link-item">
-      <a href="mainstream.html" target="_self">
+      <a href="mainstream.html">
         <img src="assets/images/mainstream-digital.png" alt="Mainstream Digital" class="link-image">
       </a>
     </div>
     <div class="link-item">
-      <a href="merchandise.html" target="_self">
+      <a href="merchandise.html">
         <img src="assets/images/Merch.png" alt="Shop3" class="link-image">
       </a>
     </div>
   </section>
 
-  <!-- About Us Section -->
+  <!-- About Us -->
   <section class="about-us">
     <h2>Info</h2>
-    <p>
-      Looking To Become A Partner Please Feel Free To Reach Out Via Email</p>
-    <p>
-      📩 Let’s connect and build something Monumental together!
-    </p>
+    <p>Looking To Become A Partner? Please Feel Free To Reach Out Via Email.</p>
+    <p>📩 Let’s connect and build something Monumental together!</p>
   </section>
 
-  <!-- Footer Section -->
+  <!-- Footer -->
   <footer>
-    <p>&copy; MDDProductions. All rights reserved.</p>
+    <p>&copy; Merchandise Done Different. All rights reserved.</p>
+    <div class="social-links">
+      <p>Follow Us</p>
+      <a href="https://discord.gg/25s2TW4n95" target="_blank" title="Discord">
+        <img src="assets/images/discord.png" alt="Discord">
+      </a>
+      <a href="https://www.youtube.com/@MDDProductions-tv" target="_blank" title="YouTube">
+        <img src="assets/images/youtube.png" alt="YouTube">
+      </a>
+      <a href="https://www.tiktok.com/@mddproductions.tv" target="_blank" title="TikTok">
+        <img src="assets/images/tiktok.png" alt="TikTok">
+      </a>
+    </div>
   </footer>
+
 </body>
 </html>

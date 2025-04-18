@@ -1,153 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <style>
-        /* Reset and base styles */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #f4f4f4;
-            padding-top: 120px; /* Prevent overlap under nav */
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #f4f4f4;
+      padding-top: 120px;
+    }
 
-        /* Nav Styles */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #000;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-        }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #000;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
 
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            margin: 0;
-            padding: 20px 0;
-        }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 20px 0;
+    }
 
-        nav ul li {
-            margin: 0 15px;
-        }
+    nav ul li {
+      margin: 0 15px;
+    }
 
-        nav ul li a {
-            color: #f4f4f4;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 8px 12px;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
+    nav ul li a {
+      color: #f4f4f4;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
 
-        nav ul li a:hover {
-            background-color: #004ad4;
-        }
+    nav ul li a:hover {
+      background-color: #004ad4;
+    }
 
-        /* Logo */
-        .logo {
-            text-align: center;
-            margin-top: 20px;
-            margin-bottom: 40px;
-            position: relative;
-            animation: moveLogo 5s infinite alternate;
-        }
+    .logo {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 40px;
+      position: relative;
+      animation: moveLogo 5s infinite alternate;
+    }
 
-        .logo a {
-            display: inline-block;
-        }
+    .logo a {
+      display: inline-block;
+    }
 
-        .logo img {
-            max-height: 150px;
-            filter: drop-shadow(0 0 8px #004ad4);
-            animation: scaleLogo 2s infinite alternate;
-        }
+    .logo img {
+      max-height: 150px;
+      filter: drop-shadow(0 0 8px #004ad4);
+      animation: scaleLogo 2s infinite alternate;
+    }
 
-        @keyframes moveLogo {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(30px);
-            }
-        }
+    @keyframes moveLogo {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(30px); }
+    }
 
-        @keyframes scaleLogo {
-            0% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(1.2);
-            }
-        }
+    @keyframes scaleLogo {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.2); }
+    }
 
-        /* Main Content */
-        section {
-            padding: 20px;
-            max-width: 1000px;
-            margin: auto;
-        }
+    section {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
 
-        section h1 {
-            text-align: center;
-            color: #42a5f5;
-        }
+    section h1 {
+      text-align: center;
+      color: #42a5f5;
+    }
 
-        form {
-            background: rgba(0, 0, 0, 0.8);
-            border: 2px solid #004ad4;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
-        }
+    form {
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid #004ad4;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+    }
 
-        form div {
-            margin-bottom: 15px;
-        }
+    form div {
+      margin-bottom: 15px;
+    }
 
-        label {
-            display: block;
-            color: #fff;
-            font-weight: bold;
-        }
+    label {
+      display: block;
+      color: #fff;
+      font-weight: bold;
+    }
 
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            background-color: #333;
-            color: #fff;
-        }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: #333;
+      color: #fff;
+    }
 
-        button {
-            background-color: #004ad4;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
+    button {
+      background-color: #004ad4;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
 
-        button:hover {
-            background-color: #1a6cff;
-        }
+    button:hover {
+      background-color: #1a6cff;
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #f4f4f4;
-        }
-    </style>
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #f4f4f4;
+      background-color: #111;
+    }
+
+    .social-links {
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 0 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .social-links img {
+      width: 40px;
+      height: 40px;
+      filter: drop-shadow(0 0 5px #004ad4);
+    }
+
+    .social-links a:hover {
+      transform: scale(1.2);
+    }
+  </style>
 </head>
 <body>
 
@@ -172,40 +181,54 @@
   <!-- Main Content: Contact Form -->
   <section>
     <h1>Contact Us</h1>
-    <p>Feel free to reach out for any inquiries or questions. Join Our Discord https://discord.gg/25s2TW4n95 We’d love to hear from you!</p>
+    <p style="text-align: center;">
+      Feel free to reach out for any inquiries or questions.<br>
+      Join Our Discord: <a href="https://discord.gg/25s2TW4n95" target="_blank" style="color: #42a5f5;">https://discord.gg/25s2TW4n95</a><br>
+      We’d love to hear from you!
+    </p>
 
-    <!-- Contact Form -->
     <form action="submit_contact_form.php" method="POST">
-        <div>
-            <label for="name">Your Name:</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        <div>
-            <label for="email">Your Email:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div>
-            <label for="division">Select Division:</label>
-            <select id="division" name="division" required>
-                <option value="monumental">Monumental Dwellings Dynamics</option>
-                <option value="mainstream">Mainstream Digital Dynamics</option>
-                <option value="merchandise">Merchandise Done Different</option>
-            </select>
-        </div>
-        <div>
-            <label for="message">Your Message:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-        </div>
-        <div>
-            <button type="submit">Send Message</button>
-        </div>
+      <div>
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div>
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div>
+        <label for="division">Select Division:</label>
+        <select id="division" name="division" required>
+          <option value="monumental">Monumental Dwellings Dynamics</option>
+          <option value="mainstream">Mainstream Digital Dynamics</option>
+          <option value="merchandise">Merchandise Done Different</option>
+        </select>
+      </div>
+      <div>
+        <label for="message">Your Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+      </div>
+      <div>
+        <button type="submit">Send Message</button>
+      </div>
     </form>
-    
   </section>
 
-  <!-- Footer -->
+  <!-- Footer with Social Media -->
   <footer>
     <p>&copy; MDD Productions Contact. All rights reserved.</p>
+    <div class="social-links">
+      <p>Follow Us</p>
+      <a href="https://discord.gg/25s2TW4n95" target="_blank" title="Discord">
+        <img src="assets/images/discord.png" alt="Discord">
+      </a>
+      <a href="https://www.youtube.com/@MDDProductions-tv" target="_blank" title="YouTube">
+        <img src="assets/images/youtube.png" alt="YouTube">
+      </a>
+      <a href="https://www.tiktok.com/@mddproductions.tv" target="_blank" title="TikTok">
+        <img src="assets/images/tiktok.png" alt="TikTok">
+      </a>
+    </div>
   </footer>
 
 </body>
