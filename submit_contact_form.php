@@ -1,38 +1,40 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Sanitize input
-    $name     = htmlspecialchars($_POST['name']);
-    $email    = htmlspecialchars($_POST['email']);
-    $message  = htmlspecialchars($_POST['message']);
-    $division = htmlspecialchars($_POST['division']);
+    $name     = strip_tags(trim($_POST['name']));
+    $email    = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+    $message  = strip_tags(trim($_POST['message']));
+    $division = trim($_POST['division']);
 
-    // Define division emails
+    // Email addresses per division
     $divisionEmails = [
-        "monumental" => "monumentaldwellingsdynamics@mddproductions.tv",
-        "mainstream" => "mainstreamdigitaldynamics@mddproductions.tv",
+        "monumental"  => "monumentaldwellingsdynamics@mddproductions.tv",
+        "mainstream"  => "mainstreamdigitaldynamics@mddproductions.tv",
         "merchandise" => "merchandisedonedifferent@mddproductions.tv"
-    ];  // <-- Added semicolon here
+    ];
 
-    // Check for valid division
+    // Validate division
     if (!array_key_exists($division, $divisionEmails)) {
-        die("Invalid division selected.");
+        http_response_code(400);
+        echo "Invalid division selected.";
+        exit;
     }
 
-    // Email details
+    // Prepare email
     $to      = $divisionEmails[$division];
     $subject = "New Contact Form Submission - $division";
-    $body    = "You have received a new message:\n\n"
+    $body    = "You received a new message:\n\n"
              . "Name: $name\n"
              . "Email: $email\n"
              . "Division: $division\n\n"
              . "Message:\n$message\n";
-    $headers = "From: $email\r\n";
+    $headers = "From: no-reply@mddproductions.tv\r\n";
     $headers .= "Reply-To: $email\r\n";
 
-    // Send the email
+    // Email and backup
     $mailSent = mail($to, $subject, $body, $headers);
 
-    // Save to file (backup)
+    // Backup message in a file
     $folderPath = __DIR__ . "/messages/$division";
     if (!is_dir($folderPath)) {
         mkdir($folderPath, 0755, true);
@@ -41,14 +43,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $timestamp = date("Y-m-d_H-i-s");
     $filename = "$folderPath/message_$timestamp.txt";
     $fileContent = "Name: $name\nEmail: $email\nDivision: $division\nMessage:\n$message\n";
-
     file_put_contents($filename, $fileContent);
 
-    // Response to user
+    // Show response
     if ($mailSent) {
-        echo "<p style='color: green;'>Message sent and backed up successfully to the $division division.</p>";
+        echo "<p style='color: green;'>Message sent and saved successfully!</p>";
     } else {
-        echo "<p style='color: orange;'>Backup saved, but there was an error sending your message via email.</p>";
+        echo "<p style='color: orange;'>Message saved, but email failed to send.</p>";
     }
+} else {
+    http_response_code(405);
+    echo "Method not allowed. Please use POST.";
 }
 ?>

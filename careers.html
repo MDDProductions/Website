@@ -1,208 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Careers - MDD Productions</title>
-    <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers - MDD Productions</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            background-color: #000;
-            color: #f4f4f4;
-        }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: #000;
+      color: #f4f4f4;
+      padding: 0 15px;
+    }
 
-        header {
-            text-align: center;
-            padding: 20px;
-        }
+    header {
+      text-align: center;
+      padding: 20px 10px;
+    }
 
-        .logo {
-            max-height: 100px;
-            cursor: pointer;
-            transition: transform 0.3s ease-in-out;
-        }
+    .logo {
+      max-height: 80px;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+      width: 100%;
+      max-width: 250px;
+    }
 
-        .logo:hover {
-            transform: scale(1.1);
-        }
+    .logo:hover {
+      transform: scale(1.1);
+    }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 15px;
-        }
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+      padding: 0;
+    }
 
-        nav ul li a {
-            text-decoration: none;
-            color: #fff;
-            background: #111;
-            padding: 10px 20px;
-            border-radius: 6px;
-            transition: 0.3s;
-        }
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      background: #111;
+      padding: 10px 15px;
+      border-radius: 6px;
+      transition: 0.3s;
+      font-size: 0.95rem;
+    }
 
-        nav ul li a:hover {
-            background-color: #004ad4;
-            color: #fff;
-        }
+    nav ul li a:hover {
+      background-color: #004ad4;
+      color: #fff;
+    }
 
-        .career-section {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.03);
-            border-radius: 10px;
-        }
+    .career-section {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.03);
+      border-radius: 10px;
+    }
 
-        .career-section h1 {
-            text-align: center;
-            color: #00aaff;
-            margin-bottom: 10px;
-        }
+    .career-section h1 {
+      text-align: center;
+      color: #00aaff;
+      margin-bottom: 10px;
+      font-size: 2rem;
+    }
 
-        .career-section p {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 1.1rem;
-        }
+    .career-section p {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1rem;
+    }
 
-        .job-block {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid #004ad4;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-        }
+    .job-block {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid #004ad4;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    }
 
-        .job-block h3 {
-            color: #00aaff;
-            margin-bottom: 10px;
-            font-size: 1.5rem;
-        }
+    .job-block h3 {
+      color: #00aaff;
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
 
-        .job-block p {
-            font-size: 1rem;
-            margin-bottom: 15px;
-        }
+    .job-block p {
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
 
-        .job-block form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+    .job-block form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-        .job-block input[type="file"] {
-            background: #111;
-            padding: 10px;
-            border: 1px solid #004ad4;
-            border-radius: 6px;
-            color: #f4f4f4;
-        }
+    .job-block input[type="file"] {
+      background: #111;
+      padding: 10px;
+      border: 1px solid #004ad4;
+      border-radius: 6px;
+      color: #f4f4f4;
+      font-size: 0.9rem;
+    }
 
-        .job-block button {
-            background-color: #004ad4;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            font-size: 1rem;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
+    .job-block button {
+      background-color: #004ad4;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
 
-        .job-block button:hover {
-            background-color: #003aab;
-        }
+    .job-block button:hover {
+      background-color: #003aab;
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.9);
-            color: #f4f4f4;
-            margin-top: 50px;
-        }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.9);
+      color: #f4f4f4;
+      margin-top: 50px;
+    }
 
-        .social-links img {
-            width: 30px;
-            margin: 0 10px;
-            vertical-align: middle;
-        }
-    </style>
+    .social-links {
+      margin-top: 10px;
+    }
+
+    .social-links img {
+      width: 25px;
+      margin: 0 8px;
+      vertical-align: middle;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .career-section h1 {
+        font-size: 1.5rem;
+      }
+
+      .job-block h3 {
+        font-size: 1.2rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .job-block p,
+      .career-section p {
+        font-size: 0.95rem;
+      }
+
+      .job-block input[type="file"],
+      .job-block button {
+        font-size: 0.9rem;
+        padding: 10px;
+      }
+
+      .logo {
+        max-width: 180px;
+      }
+
+      body {
+        padding: 0 10px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <a href="index.html">
+      <img src="assets/images/logo.png" alt="MDD Productions Logo" class="logo" />
+    </a>
+    <nav>
+      <ul>
+        <li><a href="monumental.html">Real Estate</a></li>
+        <li><a href="mainstream.html">Content Creation</a></li>
+        <li><a href="merchandise.html">Merchandise</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <header>
-        <a href="index.html">
-            <img src="assets/images/logo.png" alt="MDD Productions Logo" class="logo">
-        </a>
-        <nav>
-            <ul>
-                <li><a href="monumental.html">Real Estate</a></li>
-                <li><a href="mainstream.html">Content Creation</a></li>
-                <li><a href="merchandise.html">Merchandise</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <section class="career-section">
+    <h1>Join Our Team</h1>
+    <p>Explore career opportunities across our divisions. Submit your application below each role.</p>
 
-    <section class="career-section">
-        <h1>Join Our Team</h1>
-        <p>Explore career opportunities across our divisions. Submit your application below each role.</p>
+    <!-- Job Blocks (same as before) -->
+    <div class="job-block">
+      <h3>Real Estate Agent</h3>
+      <p>Help clients buy, sell, or rent properties. We’re looking for licensed agents who are passionate about real estate and providing excellent customer service.</p>
+      <p>Send Resume</p>
+      <form>
+        <input type="file" accept=".pdf,.docx,.doc" required />
+        <button type="submit">Apply for Real Estate Agent</button>
+      </form>
+    </div>
 
-        <!-- Job 1 -->
-        <div class="job-block">
-            <h3>Real Estate Agent</h3>
-            <p>Help clients buy, sell, or rent properties. We’re looking for licensed agents who are passionate about real estate and providing excellent customer service.</p>
-            <p>Send Resume</p>
-            <form>
-                <input type="file" accept=".pdf,.docx,.doc" required>
-                <button type="submit">Apply for Real Estate Agent</button>
-            </form>
-        </div>
+    <div class="job-block">
+      <h3>Content Creator</h3>
+      <p>Produce engaging digital content across our platforms. Ideal candidates are creative thinkers with experience in editing, filming, and social media strategy.</p>
+      <p><strong>Step 1:</strong> <a href="assets/forms/Content_Creator_Application.pdf" download style="color:#00aaff;">Download and complete this application form (PDF)</a></p>
+      <p><strong>Step 2:</strong> Upload your completed application form below (PDF, DOCX, or DOC)</p>
+      <form>
+        <input type="file" accept=".pdf,.docx,.doc" required />
+        <button type="submit">Apply for Content Creator</button>
+      </form>
+    </div>
 
-        <!-- Job 2 -->
-        <div class="job-block">
-            <h3>Content Creator</h3>
-            <p>Produce engaging digital content across our platforms. Ideal candidates are creative thinkers with experience in editing, filming, and social media strategy.</p>
-            <p><strong>Step 1:</strong> <a href="assets/forms/Content_Creator_Application.pdf" download style="color:#00aaff;">Download and complete this application form (PDF)</a></p>
-            <p><strong>Step 2:</strong> Upload your completed application form below (PDF, DOCX, or DOC)</p>
-            <form>
-                <input type="file" accept=".pdf,.docx,.doc" required>
-                <button type="submit">Apply for Content Creator</button>
-            </form>
-        </div>
+    <div class="job-block">
+      <h3>Marketing Specialist</h3>
+      <p>Develop and execute marketing campaigns across all brands. You should understand analytics, branding, and digital platforms to help us grow.</p>
+      <p>Send Resume</p>
+      <form>
+        <input type="file" accept=".pdf,.docx,.doc" required />
+        <button type="submit">Apply for Marketing Specialist</button>
+      </form>
+    </div>
+  </section>
 
-        <!-- Job 3 -->
-        <div class="job-block">
-            <h3>Marketing Specialist</h3>
-            <p>Develop and execute marketing campaigns across all brands. You should understand analytics, branding, and digital platforms to help us grow.</p>
-            <p>Send Resume</p>
-            <form>
-                <input type="file" accept=".pdf,.docx,.doc" required>
-                <button type="submit">Apply for Marketing Specialist</button>
-            </form>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 MDD Productions. All rights reserved.</p>
-        <div class="social-links">
-            <a href="https://discord.gg/25s2TW4n95" target="_blank"><img src="assets/images/discord.png" alt="Discord"></a>
-            <a href="https://www.youtube.com/@MDDProductions-tv" target="_blank"><img src="assets/images/youtube.png" alt="YouTube"></a>
-            <a href="https://www.tiktok.com/@mddproductions.tv" target="_blank"><img src="assets/images/tiktok.png" alt="TikTok"></a>
-        </div>
-    </footer>
-
+  <footer>
+    <p>&copy; 2025 MDD Productions. All rights reserved.</p>
+    <div class="social-links">
+      <a href="https://discord.gg/25s2TW4n95" target="_blank"><img src="assets/images/discord.png" alt="Discord" /></a>
+      <a href="https://www.youtube.com/@MDDProductions-tv" target="_blank"><img src="assets/images/youtube.png" alt="YouTube" /></a>
+      <a href="https://www.tiktok.com/@mddproductions.tv" target="_blank"><img src="assets/images/tiktok.png" alt="TikTok" /></a>
+    </div>
+  </footer>
 </body>
 </html>

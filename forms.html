@@ -6,16 +6,14 @@
   <title>Forms</title>
   <link rel="stylesheet" href="assets/css/style.css"/>
   <style>
-    /* Reset */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background-color: #000;
       color: #f4f4f4;
-      padding-top: 120px; /* Prevent overlap under nav */
+      padding-top: 120px;
     }
 
-    /* Nav Styles */
     nav {
       position: fixed;
       top: 0;
@@ -28,13 +26,14 @@
     nav ul {
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       list-style: none;
       margin: 0;
-      padding: 20px 0;
+      padding: 20px 10px;
     }
 
     nav ul li {
-      margin: 0 15px;
+      margin: 5px 10px;
     }
 
     nav ul li a {
@@ -50,44 +49,25 @@
       background-color: #004ad4;
     }
 
-    /* Logo */
     .logo {
       text-align: center;
       margin-top: 50px;
-      margin-bottom: 100px;
-      position: relative;
-      animation: moveLogo 5s infinite alternate;
-    }
-
-    .logo a {
-      display: inline-block;
+      margin-bottom: 80px;
     }
 
     .logo img {
-      max-height: 150px;
+      max-height: 120px;
+      width: 80%;
+      max-width: 300px;
       filter: drop-shadow(0 0 8px #004ad4);
       animation: scaleLogo 2s infinite alternate;
     }
 
-    @keyframes moveLogo {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(30px);
-      }
-    }
-
     @keyframes scaleLogo {
-      0% {
-        transform: scale(1);
-      }
-      100% {
-        transform: scale(1.2);
-      }
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
     }
 
-    /* Main Content */
     main {
       padding: 20px;
       max-width: 1000px;
@@ -97,6 +77,7 @@
     main h1 {
       text-align: center;
       color: #42a5f5;
+      font-size: 2rem;
     }
 
     .form-card {
@@ -109,7 +90,7 @@
     }
 
     .form-card h2 {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       color: #42a5f5;
       margin-bottom: 10px;
     }
@@ -138,6 +119,53 @@
       padding: 20px;
       color: #f4f4f4;
     }
+
+    .social-links {
+      margin-top: 10px;
+    }
+
+    .social-links a {
+      margin: 0 10px;
+      display: inline-block;
+    }
+
+    .social-links img {
+      width: 32px;
+      height: 32px;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        padding: 10px;
+      }
+
+      nav ul li {
+        margin: 5px 0;
+      }
+
+      .form-card {
+        padding: 15px;
+      }
+
+      .logo img {
+        max-height: 100px;
+        width: 90%;
+      }
+
+      main h1 {
+        font-size: 1.6rem;
+      }
+
+      .form-card h2 {
+        font-size: 1.2rem;
+      }
+
+      .form-card p {
+        font-size: 0.95rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -163,56 +191,49 @@
   <!-- Main Content -->
   <main>
     <h1>Available Forms</h1>
-    <p>Please click below to view or download the appropriate form.</p>
+    <p style="text-align:center;">Please click below to view or download the appropriate form.</p>
 
     <div class="form-card">
-      <!-- Inside <main> -->
-  <main>
-    <h1>Available Forms</h1>
-   
-    <div class="form-card">
       <h2>Rental Application</h2>
-      <p>Apply to rent a property through Monumental Dwellings Dynamics. Fill Out Review And Email To monumentaldwellingdynamics@mddproductions.tv</p>
+      <p>Apply to rent a property through Monumental Dwellings Dynamics. Fill Out Review And Email To <strong>monumentaldwellingdynamics@mddproductions.tv</strong></p>
       <a href="assets/forms/RENTAL-APPLICATION.docx" download>View/Download</a>
     </div>
-  
+
     <div class="form-card">
       <h2>Residential Lease Agreement</h2>
-      <p>Review the terms and conditions of our leasing agreement. Fill Out And Email To monumentaldwellingdynamics@mddproductions.tv</p>
+      <p>Review the terms and conditions of our leasing agreement. Fill Out And Email To <strong>monumentaldwellingdynamics@mddproductions.tv</strong></p>
       <a href="assets/forms/RESIDENTIAL-LEASE-AGREEMENT.docx" download>View/Download</a>
     </div>
-  
+
     <div class="form-card">
       <h2>Media Release Form</h2>
-      <p>Submit this to authorize use of media on Mainstream Digital Dynamics platforms. Email To mainstreamdigitaldynamics@mddproductions.tv</p>
+      <p>Submit this to authorize use of media on Mainstream Digital Dynamics platforms. Email To <strong>mainstreamdigitaldynamics@mddproductions.tv</strong></p>
       <a href="assets/forms/Media-Release-Form.docx" download>View/Download</a>
     </div>
-  
+
     <div class="form-card">
       <h2>Partnership Request Form</h2>
-      <p>Request to collaborate or partner with any of MDD's brands or merchandise initiatives. Email Form To merchandisedonedifferent@mddproductions.tv</p>
+      <p>Request to collaborate or partner with any of MDD's brands or merchandise initiatives. Email Form To <strong>merchandisedonedifferent@mddproductions.tv</strong></p>
       <a href="assets/forms/Partnership-Request-Form.docx" download>View/Download</a>
     </div>
   </main>
-  
-  </main>
 
-    <!-- Footer with Social Media -->
-    <footer>
-      <p>&copy; MDD Productions Contact. All rights reserved.</p>
-      <div class="social-links">
-        <p>Follow Us</p>
-        <a href="https://discord.gg/25s2TW4n95" target="_blank" title="Discord">
-          <img src="assets/images/discord.png" alt="Discord">
-        </a>
-        <a href="https://www.youtube.com/@MDDProductions-tv" target="_blank" title="YouTube">
-          <img src="assets/images/youtube.png" alt="YouTube">
-        </a>
-        <a href="https://www.tiktok.com/@mddproductions.tv" target="_blank" title="TikTok">
-          <img src="assets/images/tiktok.png" alt="TikTok">
-        </a>
-      </div>
-    </footer>
-  
-  </body>
-  </html>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; MDD Productions Contact. All rights reserved.</p>
+    <div class="social-links">
+      <p>Follow Us</p>
+      <a href="https://discord.gg/25s2TW4n95" target="_blank" title="Discord">
+        <img src="assets/images/discord.png" alt="Discord">
+      </a>
+      <a href="https://www.youtube.com/@MDDProductions-tv" target="_blank" title="YouTube">
+        <img src="assets/images/youtube.png" alt="YouTube">
+      </a>
+      <a href="https://www.tiktok.com/@mddproductions.tv" target="_blank" title="TikTok">
+        <img src="assets/images/tiktok.png" alt="TikTok">
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>

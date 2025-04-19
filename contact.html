@@ -25,14 +25,15 @@
 
     nav ul {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       list-style: none;
       margin: 0;
-      padding: 20px 0;
+      padding: 20px 10px;
     }
 
     nav ul li {
-      margin: 0 15px;
+      margin: 5px 10px;
     }
 
     nav ul li a {
@@ -42,6 +43,7 @@
       padding: 8px 12px;
       border-radius: 5px;
       transition: background 0.3s;
+      display: inline-block;
     }
 
     nav ul li a:hover {
@@ -50,9 +52,7 @@
 
     .logo {
       text-align: center;
-      margin-top: 20px;
-      margin-bottom: 40px;
-      position: relative;
+      margin: 20px 10px 40px;
       animation: moveLogo 5s infinite alternate;
     }
 
@@ -62,6 +62,7 @@
 
     .logo img {
       max-height: 150px;
+      max-width: 90%;
       filter: drop-shadow(0 0 8px #004ad4);
       animation: scaleLogo 2s infinite alternate;
     }
@@ -114,6 +115,7 @@
       border: 1px solid #ccc;
       background-color: #333;
       color: #fff;
+      font-size: 16px;
     }
 
     button {
@@ -123,6 +125,8 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      width: 100%;
+      font-size: 16px;
       transition: background 0.3s ease;
     }
 
@@ -143,7 +147,7 @@
 
     .social-links a {
       display: inline-block;
-      margin: 0 10px;
+      margin: 10px;
       transition: transform 0.3s ease;
     }
 
@@ -155,6 +159,34 @@
 
     .social-links a:hover {
       transform: scale(1.2);
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+
+      .logo img {
+        max-height: 120px;
+      }
+
+      section {
+        padding: 15px;
+      }
+
+      input, textarea, select, button {
+        font-size: 16px;
+      }
+
+      .social-links img {
+        width: 36px;
+        height: 36px;
+      }
     }
   </style>
 </head>
@@ -171,19 +203,22 @@
     </ul>
   </nav>
 
-  <!-- Logo (Clickable) -->
+  <!-- Logo -->
   <div class="logo">
     <a href="index.html">
       <img src="assets/images/logo.png" alt="Holding Company Logo">
     </a>
   </div>
 
-  <!-- Main Content: Contact Form -->
+  <!-- Contact Form -->
   <section>
     <h1>Contact Us</h1>
     <p style="text-align: center;">
       Feel free to reach out for any inquiries or questions.<br>
-      Join Our Discord: <a href="https://discord.gg/25s2TW4n95" target="_blank" style="color: #42a5f5;">https://discord.gg/25s2TW4n95</a><br>
+      Join Our Discord:
+      <a href="https://discord.gg/25s2TW4n95" target="_blank" style="color: #42a5f5;">
+        https://discord.gg/25s2TW4n95
+      </a><br>
       We’d love to hear from you!
     </p>
 
@@ -214,7 +249,7 @@
     </form>
   </section>
 
-  <!-- Footer with Social Media -->
+  <!-- Footer -->
   <footer>
     <p>&copy; MDD Productions Contact. All rights reserved.</p>
     <div class="social-links">
