@@ -1,3 +1,5 @@
+<?php include 'counter.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -135,8 +137,6 @@
       padding: 10px;
       background: rgba(0, 0, 0, 0.85);
       color: #f4f4f4;
-      position: fixed;
-      bottom: 0;
       width: 100%;
     }
 
@@ -232,6 +232,17 @@
       📩 Let’s connect and build something Monumental together!
     </p>
   </section>
+
+  <!-- Subscribe Section -->
+<section class="subscribe-section" style="text-align:center; padding: 50px 20px; background: rgba(0,0,0,0.85);">
+  <h2 style="color:#004ad4; font-size:2rem; margin-bottom:20px;">Subscribe to MDD News</h2>
+  <p style="margin-bottom: 20px; font-size: 1.1rem;">Stay updated on the latest from MDD Productions.</p>
+  <form action="subscribe.php" method="POST" style="max-width:500px; margin:0 auto;">
+    <input type="email" name="subscriber_email" required placeholder="Enter your email" style="padding: 10px; width: 70%; border-radius: 5px; border: none; margin-right: 10px;">
+    <button type="submit" style="padding: 10px 20px; background: #004ad4; color: #fff; border: none; border-radius: 5px; cursor: pointer;">Subscribe</button>
+  </form>
+</section>
+
 
     <!-- Footer with Social Media -->
     <footer>

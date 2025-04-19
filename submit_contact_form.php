@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         "monumental" => "monumentaldwellingsdynamics@mddproductions.tv",
         "mainstream" => "mainstreamdigitaldynamics@mddproductions.tv",
         "merchandise" => "merchandisedonedifferent@mddproductions.tv"
+    ];  // <-- Added semicolon here
 
     // Check for valid division
     if (!array_key_exists($division, $divisionEmails)) {
