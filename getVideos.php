@@ -33,3 +33,4 @@ foreach (glob($fullPath . "/*") as $file) {
 }
 
 echo json_encode($videos);
+?>
