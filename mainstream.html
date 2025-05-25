@@ -144,10 +144,6 @@
         <button onclick="showCategory('tiktokVideos')">TikTok</button>
       </div>
 
-      <div style="text-align:center; margin: 15px 0;">
-        <button id="muteToggleBtn">Unmute</button>
-      </div>
-
       <div id="videoPlayerContainer" class="video-gallery">
         <video id="videoPlayer" autoplay loop controls preload="auto" muted>
           Your browser does not support the video tag.
@@ -221,47 +217,17 @@
       const files = videoFiles[categoryKey];
       if (files && files.length > 0) {
         const randomVideo = files[Math.floor(Math.random() * files.length)];
-        const videoSrc = `${folderPath}/${randomVideo}`;
-
-        // Remove all existing <source> elements
-        while (videoPlayer.firstChild) {
-          videoPlayer.removeChild(videoPlayer.firstChild);
-        }
-
-        // Create a new <source> element
-        const source = document.createElement("source");
-        source.src = videoSrc;
-        source.type = "video/mp4";
-        videoPlayer.appendChild(source);
-
-        // Reload the video element and play
+        videoPlayer.pause();
+        videoPlayer.src = `${folderPath}/${randomVideo}`;
         videoPlayer.load();
-        videoPlayer.play().catch(err => {
-          console.warn("Video play error:", err);
+        videoPlayer.play().catch((error) => {
+          console.warn("Video play error:", error);
         });
       } else {
         alert("No videos found in this category.");
-
-        // Clear video sources if no videos found
-        while (videoPlayer.firstChild) {
-          videoPlayer.removeChild(videoPlayer.firstChild);
-        }
+        videoPlayer.src = "";
       }
     }
-
-    const videoPlayer = document.getElementById("videoPlayer");
-    const muteToggleBtn = document.getElementById("muteToggleBtn");
-
-    function updateMuteButton() {
-      muteToggleBtn.textContent = videoPlayer.muted ? "Unmute" : "Mute";
-    }
-
-    muteToggleBtn.addEventListener("click", () => {
-      videoPlayer.muted = !videoPlayer.muted;
-      updateMuteButton();
-    });
-
-    updateMuteButton();
 
     window.onload = () => {
       showCategory("youtubeVideos");
