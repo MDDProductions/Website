@@ -145,7 +145,7 @@
       </div>
 
       <div id="videoPlayerContainer" class="video-gallery">
-        <video id="videoPlayer" autoplay loop controls preload="auto">
+        <video id="videoPlayer" autoplay muted loop controls preload="auto">
           Your browser does not support the video tag.
         </video>
       </div>
@@ -176,14 +176,35 @@
     };
 
     const videoFiles = {
-      youtubeVideos: ["video1.mp4", "video2.mp4", "video3.mp4", "video4.mp4"],
-      youtubeShorts: [
-        "short1.mp4", "short2.mp4", "short3.mp4", "short4.mp4",
-        "short5.mp4", "short6.mp4", "short7.mp4", "short8.mp4",
-        "short9.mp4", "short10.mp4", "short11.mp4", "short12.mp4",
-        "short13.mp4", "short14.mp4", "short15.mp4", "short16.mp4", "short17.mp4"
+      youtubeVideos: [
+        "video1.mp4",
+        "video2.mp4",
+        "video3.mp4",
+        "video4.mp4"
       ],
-      tiktokVideos: ["tiktok1.mp4", "tiktok2.mp4"]
+      youtubeShorts: [
+        "short1.mp4",
+        "short2.mp4",
+        "short3.mp4",
+        "short4.mp4",
+        "short5.mp4",
+        "short6.mp4",
+        "short7.mp4",
+        "short8.mp4",
+        "short9.mp4",
+        "short10.mp4",
+        "short11.mp4",
+        "short12.mp4",
+        "short13.mp4",
+        "short14.mp4",
+        "short15.mp4",
+        "short16.mp4",
+        "short17.mp4"
+      ],
+      tiktokVideos: [
+        "tiktok1.mp4",
+        "tiktok2.mp4"
+      ]
     };
 
     function showCategory(categoryKey) {
@@ -196,13 +217,9 @@
       const files = videoFiles[categoryKey];
       if (files && files.length > 0) {
         const randomVideo = files[Math.floor(Math.random() * files.length)];
-        const videoPath = `${folderPath}/${randomVideo}`;
-
-        videoPlayer.src = videoPath;
-        videoPlayer.load();
-
-        videoPlayer.play().catch((err) => {
-          console.error("Video play error:", err);
+        videoPlayer.src = `${folderPath}/${randomVideo}`;
+        videoPlayer.play().catch(error => {
+          console.error("Video play error:", error);
         });
       } else {
         alert("No videos found in this category.");
