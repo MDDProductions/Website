@@ -221,11 +221,31 @@
       const files = videoFiles[categoryKey];
       if (files && files.length > 0) {
         const randomVideo = files[Math.floor(Math.random() * files.length)];
-        videoPlayer.src = `${folderPath}/${randomVideo}`;
-        videoPlayer.play();
+        const videoSrc = `${folderPath}/${randomVideo}`;
+
+        // Remove all existing <source> elements
+        while (videoPlayer.firstChild) {
+          videoPlayer.removeChild(videoPlayer.firstChild);
+        }
+
+        // Create a new <source> element
+        const source = document.createElement("source");
+        source.src = videoSrc;
+        source.type = "video/mp4";
+        videoPlayer.appendChild(source);
+
+        // Reload the video element and play
+        videoPlayer.load();
+        videoPlayer.play().catch(err => {
+          console.warn("Video play error:", err);
+        });
       } else {
         alert("No videos found in this category.");
-        videoPlayer.src = "";
+
+        // Clear video sources if no videos found
+        while (videoPlayer.firstChild) {
+          videoPlayer.removeChild(videoPlayer.firstChild);
+        }
       }
     }
 
