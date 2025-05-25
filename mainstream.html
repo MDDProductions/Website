@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MainStream Digital Dynamics</title>
   <link rel="icon" href="assets/images/favicon.png" type="image/x-icon" />
   <style>
@@ -11,7 +11,6 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Arial', sans-serif;
       background-color: #000;
@@ -20,17 +19,14 @@
       flex-direction: column;
       min-height: 100vh;
     }
-
     header {
       text-align: center;
       padding: 20px 0;
     }
-
     .logo-container img {
       max-width: 200px;
       height: auto;
     }
-
     .category-navigation {
       display: flex;
       justify-content: center;
@@ -38,7 +34,6 @@
       gap: 10px;
       padding: 20px;
     }
-
     .category-navigation button {
       padding: 12px 20px;
       font-size: 16px;
@@ -51,29 +46,25 @@
       flex-grow: 1;
       min-width: 150px;
     }
-
     .category-navigation button:hover {
       background-color: #42a5f5;
     }
-
     .video-gallery {
       display: none;
       justify-content: center;
       padding: 0 20px 30px;
       width: 100%;
     }
-
     video {
       width: 100%;
       max-width: 1000px;
       height: auto;
       border-radius: 10px;
+      background-color: black;
     }
-
     .active {
       display: flex;
     }
-
     footer {
       background: rgba(0, 0, 0, 0.85);
       color: #f4f4f4;
@@ -81,11 +72,9 @@
       padding: 20px 10px;
       margin-top: auto;
     }
-
     .social-links {
       margin-top: 10px;
     }
-
     .social-links a img {
       height: 30px;
       margin: 0 10px;
@@ -93,32 +82,26 @@
       filter: drop-shadow(0 0 4px #004ad4);
       transition: transform 0.3s ease;
     }
-
     .social-links a img:hover {
       transform: scale(1.1);
     }
-
     @media (max-width: 768px) {
       .category-navigation {
         flex-direction: column;
         align-items: center;
         gap: 15px;
       }
-
       .category-navigation button {
         width: 100%;
         font-size: 18px;
       }
-
       .logo-container img {
         max-width: 150px;
       }
-
       .social-links a img {
         height: 24px;
         margin: 0 6px;
       }
-
       video {
         width: 100%;
         height: auto;
@@ -128,114 +111,127 @@
 </head>
 <body>
 
-  <header>
-    <div class="logo-container">
-      <a href="index.html">
-        <img src="assets/images/logo.png" alt="MainStream Digital Dynamics Logo" />
-      </a>
+<header>
+  <div class="logo-container">
+    <a href="index.html">
+      <img src="assets/images/logo.png" alt="MainStream Digital Dynamics Logo" />
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="media-section">
+    <div class="category-navigation">
+      <button onclick="showCategory('youtubeVideos')">YouTube Videos</button>
+      <button onclick="showCategory('youtubeShorts')">YouTube Shorts</button>
+      <button onclick="showCategory('tiktokVideos')">TikTok</button>
     </div>
-  </header>
 
-  <main>
-    <section class="media-section">
-      <div class="category-navigation">
-        <button onclick="showCategory('youtubeVideos')">YouTube Videos</button>
-        <button onclick="showCategory('youtubeShorts')">YouTube Shorts</button>
-        <button onclick="showCategory('tiktokVideos')">TikTok</button>
-      </div>
-
-      <div id="videoPlayerContainer" class="video-gallery">
-        <video id="videoPlayer" autoplay loop controls preload="auto" muted>
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; MainStream Digital Dynamics. All rights reserved.</p>
-    <div class="social-links">
-      <p>Follow Us</p>
-      <a href="https://discord.gg/25s2TW4n95" target="_blank" title="Discord">
-        <img src="assets/images/discord.png" alt="Discord" />
-      </a>
-      <a href="https://www.youtube.com/@MDDProductions-tv" target="_blank" title="YouTube">
-        <img src="assets/images/youtube.png" alt="YouTube" />
-      </a>
-      <a href="https://www.tiktok.com/@mddproductions.tv" target="_blank" title="TikTok">
-        <img src="assets/images/tiktok.png" alt="TikTok" />
-      </a>
+    <div id="videoPlayerContainer" class="video-gallery">
+      <video id="videoPlayer" autoplay loop controls muted>
+        Your browser does not support the video tag.
+      </video>
     </div>
-  </footer>
+  </section>
+</main>
 
-  <script>
-    const folderMap = {
-      youtubeVideos: "assets/videos/youtube",
-      youtubeShorts: "assets/videos/shorts",
-      tiktokVideos: "assets/videos/tiktok"
-    };
+<footer>
+  <p>&copy; MainStream Digital Dynamics. All rights reserved.</p>
+  <div class="social-links">
+    <p>Follow Us</p>
+    <a href="https://discord.gg/25s2TW4n95" target="_blank" title="Discord">
+      <img src="assets/images/discord.png" alt="Discord" />
+    </a>
+    <a href="https://www.youtube.com/@MDDProductions-tv" target="_blank" title="YouTube">
+      <img src="assets/images/youtube.png" alt="YouTube" />
+    </a>
+    <a href="https://www.tiktok.com/@mddproductions.tv" target="_blank" title="TikTok">
+      <img src="assets/images/tiktok.png" alt="TikTok" />
+    </a>
+  </div>
+</footer>
 
-    const videoFiles = {
-      youtubeVideos: [
-        "video1.mp4",
-        "video2.mp4",
-        "video3.mp4",
-        "video4.mp4"
-      ],
-      youtubeShorts: [
-        "short1.mp4",
-        "short2.mp4",
-        "short3.mp4",
-        "short4.mp4",
-        "short5.mp4",
-        "short6.mp4",
-        "short7.mp4",
-        "short8.mp4",
-        "short9.mp4",
-        "short10.mp4",
-        "short11.mp4",
-        "short12.mp4",
-        "short13.mp4",
-        "short14.mp4",
-        "short15.mp4",
-        "short16.mp4",
-        "short17.mp4"
-      ],
-      tiktokVideos: [
-        "tiktok1.mp4",
-        "tiktok2.mp4"
-      ]
-    };
+<script>
+  const folderMap = {
+    youtubeVideos: "assets/videos/youtube",
+    youtubeShorts: "assets/videos/shorts",
+    tiktokVideos: "assets/videos/tiktok"
+  };
 
-    function showCategory(categoryKey) {
-      const folderPath = folderMap[categoryKey];
-      const videoPlayerContainer = document.getElementById("videoPlayerContainer");
-      const videoPlayer = document.getElementById("videoPlayer");
+  const videoFiles = {
+    youtubeVideos: [
+      "video1.mp4",
+      "video2.mp4",
+      "video3.mp4",
+      "video4.mp4"
+    ],
+    youtubeShorts: [
+      "short1.mp4",
+      "short2.mp4",
+      "short3.mp4",
+      "short4.mp4",
+      "short5.mp4",
+      "short6.mp4",
+      "short7.mp4",
+      "short8.mp4",
+      "short9.mp4",
+      "short10.mp4",
+      "short11.mp4",
+      "short12.mp4",
+      "short13.mp4",
+      "short14.mp4",
+      "short15.mp4",
+      "short16.mp4",
+      "short17.mp4"
+    ],
+    tiktokVideos: [
+      "tiktok1.mp4",
+      "tiktok2.mp4"
+    ]
+  };
 
-      videoPlayerContainer.classList.add("active");
+  const videoPlayerContainer = document.getElementById("videoPlayerContainer");
+  const videoPlayer = document.getElementById("videoPlayer");
 
-      const files = videoFiles[categoryKey];
-      if (files && files.length > 0) {
-        const randomVideo = files[Math.floor(Math.random() * files.length)];
-        const fullPath = `${folderPath}/${randomVideo}`;
-        console.log("Loading video:", fullPath);
-
-        videoPlayer.pause();
-        videoPlayer.src = fullPath;
-        videoPlayer.load();
-        videoPlayer.play().catch((error) => {
-          console.error("Video play error:", error);
-        });
-      } else {
-        alert("No videos found in this category.");
-        videoPlayer.src = "";
-      }
+  function showCategory(categoryKey) {
+    const folderPath = folderMap[categoryKey];
+    const files = videoFiles[categoryKey];
+    if (!files || files.length === 0) {
+      alert("No videos found in this category.");
+      videoPlayerContainer.classList.remove("active");
+      videoPlayer.pause();
+      videoPlayer.removeAttribute('src');
+      videoPlayer.load();
+      return;
     }
 
-    window.onload = () => {
-      showCategory("youtubeVideos");
-    };
-  </script>
+    const randomVideo = files[Math.floor(Math.random() * files.length)];
+    const fullPath = `${folderPath}/${randomVideo}`;
+
+    console.log("Loading video:", fullPath);
+
+    videoPlayerContainer.classList.add("active");
+
+    // Important: reset the video source to avoid play errors
+    videoPlayer.pause();
+    videoPlayer.removeAttribute('src');  // Clear the src
+    videoPlayer.load();
+
+    // Set new src
+    videoPlayer.src = fullPath;
+
+    // Try to play and catch any error to log it
+    videoPlayer.play().catch((error) => {
+      console.error("Video play error:", error);
+      alert("Sorry, this video could not be played.");
+    });
+  }
+
+  // On page load, show default category
+  window.onload = () => {
+    showCategory("youtubeVideos");
+  };
+</script>
 
 </body>
 </html>
