@@ -144,8 +144,12 @@
         <button onclick="showCategory('tiktokVideos')">TikTok</button>
       </div>
 
+      <div style="text-align:center; margin: 15px 0;">
+        <button id="muteToggleBtn">Unmute</button>
+      </div>
+
       <div id="videoPlayerContainer" class="video-gallery">
-        <video id="videoPlayer" autoplay loop controls preload="auto">
+        <video id="videoPlayer" autoplay loop controls preload="auto" muted>
           Your browser does not support the video tag.
         </video>
       </div>
@@ -169,67 +173,80 @@
   </footer>
 
   <script>
-  const folderMap = {
-    youtubeVideos: "assets/videos/youtube",
-    youtubeShorts: "assets/videos/shorts",
-    tiktokVideos: "assets/videos/tiktok"
-  };
+    const folderMap = {
+      youtubeVideos: "assets/videos/youtube",
+      youtubeShorts: "assets/videos/shorts",
+      tiktokVideos: "assets/videos/tiktok"
+    };
 
-  // Hardcoded video filenames per category
-  const videoFiles = {
-    youtubeVideos: [
-      "video1.mp4",
-      "video2.mp4",
-      "video3.mp4",
-      "video4.mp4"
-    ],
-    youtubeShorts: [
-      "short1.mp4",
-      "short2.mp4",
-      "short3.mp4",
-      "short4.mp4",
-      "short5.mp4",
-      "short6.mp4",
-      "short7.mp4",
-      "short8.mp4",
-      "short9.mp4",
-      "short10.mp4",
-      "short11.mp4",
-      "short12.mp4",
-      "short13.mp4",
-      "short14.mp4",
-      "short15.mp4",
-      "short16.mp4",
-      "short17.mp4"
-    ],
-    tiktokVideos: [
-      "tiktok1.mp4",
-      "tiktok2.mp4"
-    ]
-  };
+    const videoFiles = {
+      youtubeVideos: [
+        "video1.mp4",
+        "video2.mp4",
+        "video3.mp4",
+        "video4.mp4"
+      ],
+      youtubeShorts: [
+        "short1.mp4",
+        "short2.mp4",
+        "short3.mp4",
+        "short4.mp4",
+        "short5.mp4",
+        "short6.mp4",
+        "short7.mp4",
+        "short8.mp4",
+        "short9.mp4",
+        "short10.mp4",
+        "short11.mp4",
+        "short12.mp4",
+        "short13.mp4",
+        "short14.mp4",
+        "short15.mp4",
+        "short16.mp4",
+        "short17.mp4"
+      ],
+      tiktokVideos: [
+        "tiktok1.mp4",
+        "tiktok2.mp4"
+      ]
+    };
 
-  function showCategory(categoryKey) {
-    const folderPath = folderMap[categoryKey];
-    const videoPlayerContainer = document.getElementById("videoPlayerContainer");
-    const videoPlayer = document.getElementById("videoPlayer");
+    function showCategory(categoryKey) {
+      const folderPath = folderMap[categoryKey];
+      const videoPlayerContainer = document.getElementById("videoPlayerContainer");
+      const videoPlayer = document.getElementById("videoPlayer");
 
-    videoPlayerContainer.classList.add("active");
+      videoPlayerContainer.classList.add("active");
 
-    const files = videoFiles[categoryKey];
-    if (files && files.length > 0) {
-      const randomVideo = files[Math.floor(Math.random() * files.length)];
-      videoPlayer.src = `${folderPath}/${randomVideo}`;
-      videoPlayer.play();
-    } else {
-      alert("No videos found in this category.");
-      videoPlayer.src = "";
+      const files = videoFiles[categoryKey];
+      if (files && files.length > 0) {
+        const randomVideo = files[Math.floor(Math.random() * files.length)];
+        videoPlayer.src = `${folderPath}/${randomVideo}`;
+        videoPlayer.play();
+      } else {
+        alert("No videos found in this category.");
+        videoPlayer.src = "";
+      }
     }
-  }
 
-  window.onload = () => {
-    showCategory("youtubeVideos");
-  };
-</script>
+    const videoPlayer = document.getElementById("videoPlayer");
+    const muteToggleBtn = document.getElementById("muteToggleBtn");
+
+    function updateMuteButton() {
+      muteToggleBtn.textContent = videoPlayer.muted ? "Unmute" : "Mute";
+    }
+
+    muteToggleBtn.addEventListener("click", () => {
+      videoPlayer.muted = !videoPlayer.muted;
+      updateMuteButton();
+    });
+
+    updateMuteButton();
+
+    window.onload = () => {
+      showCategory("youtubeVideos");
+    };
+  </script>
 
 </body>
 </html>
