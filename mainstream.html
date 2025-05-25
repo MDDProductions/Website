@@ -217,11 +217,14 @@
       const files = videoFiles[categoryKey];
       if (files && files.length > 0) {
         const randomVideo = files[Math.floor(Math.random() * files.length)];
+        const fullPath = `${folderPath}/${randomVideo}`;
+        console.log("Loading video:", fullPath);
+
         videoPlayer.pause();
-        videoPlayer.src = `${folderPath}/${randomVideo}`;
+        videoPlayer.src = fullPath;
         videoPlayer.load();
         videoPlayer.play().catch((error) => {
-          console.warn("Video play error:", error);
+          console.error("Video play error:", error);
         });
       } else {
         alert("No videos found in this category.");
