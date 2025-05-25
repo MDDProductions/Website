@@ -146,8 +146,10 @@
 
       <div id="videoPlayerContainer" class="video-gallery">
         <video id="videoPlayer" autoplay muted loop controls preload="auto">
-          Your browser does not support the video tag.
-        </video>
+  <source id="videoSource" src="" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
       </div>
     </section>
   </main>
@@ -208,24 +210,28 @@
     };
 
     function showCategory(categoryKey) {
-      const folderPath = folderMap[categoryKey];
-      const videoPlayerContainer = document.getElementById("videoPlayerContainer");
-      const videoPlayer = document.getElementById("videoPlayer");
+  const folderPath = folderMap[categoryKey];
+  const videoPlayerContainer = document.getElementById("videoPlayerContainer");
+  const videoPlayer = document.getElementById("videoPlayer");
+  const videoSource = document.getElementById("videoSource");
 
-      videoPlayerContainer.classList.add("active");
+  videoPlayerContainer.classList.add("active");
 
-      const files = videoFiles[categoryKey];
-      if (files && files.length > 0) {
-        const randomVideo = files[Math.floor(Math.random() * files.length)];
-        videoPlayer.src = `${folderPath}/${randomVideo}`;
-        videoPlayer.play().catch(error => {
-          console.error("Video play error:", error);
-        });
-      } else {
-        alert("No videos found in this category.");
-        videoPlayer.src = "";
-      }
-    }
+  const files = videoFiles[categoryKey];
+  if (files && files.length > 0) {
+    const randomVideo = files[Math.floor(Math.random() * files.length)];
+    const fullPath = `${folderPath}/${randomVideo}`;
+    videoSource.src = fullPath;
+    videoPlayer.load(); // Reload video source
+    videoPlayer.play().catch(error => {
+      console.error("Video play error:", error);
+    });
+  } else {
+    alert("No videos found in this category.");
+    videoSource.src = "";
+    videoPlayer.load();
+  }
+}
 
     window.onload = () => {
       showCategory("youtubeVideos");
